@@ -1,38 +1,148 @@
-.App {
-  text-align: center;
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css');
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
 }
 
-.App-link {
-  color: #61dafb;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  height: 20px;
+  width: 20px;
+  background-color: #00f;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #00f;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 50px;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.text-content h1 {
+  font-size: 4em;
+  line-height: 1.2;
+}
+
+.text-content p {
+  font-size: 1.2em;
+  margin: 20px 0;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  background-color: #00f;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.image-content {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  flex: 1;
+}
+
+.planet img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.icon-circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: 2px solid #00f;
+}
+
+.icon-circle.bank {
+  top: 20px;
+  left: 160px;
+}
+
+.icon-circle.money {
+  top: 250px;
+  left: 20px;
+}
+
+.icon-circle.user-group {
+  top: 20px;
+  left: 320px;
+}
+
+.icon-circle.community {
+  top: 160px;
+  left: 340px;
+}
+
+.icon-circle.community img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
