@@ -3,7 +3,7 @@ import '../App.css'; // Ensure the path is correct
 import centralIcon from '../assets/middleicon.png'; // Ensure the path is correct
 import userImage from '../assets/central icon.png'; // Ensure the path is correct
 import planetImage from '../assets/planets.jpg'; // Ensure the path is correct
-// hello brother
+
 const App = () => {
   return (
     <div className="border-container">
