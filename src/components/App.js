@@ -16,8 +16,8 @@ const App = () => {
           <nav>
             <ul>
               <li><a href="#home">HOME</a></li>
-              <li><a href="#about">ABOUT</a></li>
-              <li><a href="#learn">LEARN</a></li>
+              <li><a href="#map">MAP</a></li>
+              <li><a href="#chats">CHATS</a></li>
             </ul>
           </nav>
         </header>
