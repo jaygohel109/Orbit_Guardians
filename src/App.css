@@ -63,8 +63,8 @@ h1 {
 nav ul {
   display: flex;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
+  padding: 50px;
 }
 
 nav li {
@@ -101,7 +101,7 @@ nav a {
 .text-content {
   flex: 1;
   text-align: left;
-  padding-right: 20px;
+  padding-right: 40px; /* Increased padding */
 }
 
 .text-content h1 {
@@ -130,6 +130,7 @@ button {
   width: 100%;
   max-width: 400px;
   height: auto;
+  padding-left: 40px; /* Added padding */
 }
 
 .planet img {
@@ -165,7 +166,7 @@ button {
   }
 
   .text-content {
-    padding-right: 0;
+    padding-right: 20px; /* Adjusted for smaller screens */
   }
 
   .text-content h1 {
@@ -174,6 +175,10 @@ button {
 
   .text-content p {
     font-size: 3vw;
+  }
+
+  .image-content {
+    padding-left: 20px; /* Adjusted for smaller screens */
   }
 }
 
@@ -192,6 +197,6 @@ button {
   }
 
   .image-content {
-    width: 100%;
+    padding-left: 10px; /* Adjusted for very small screens */
   }
 }
