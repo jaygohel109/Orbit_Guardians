@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import './Planets.css'; // Import the CSS file for styling
-import planetImage from '../../assets/images/planets_intro.jpg'; // Import the image
+import planetImage from '../../assets/images/planets_intro.jpg'; // Import the background image
+import earthImage from '../../assets/images/earth-image.png'; // Import the Earth image
 
 const Planets = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Planets = () => {
       </div>
       <div className="image-container">
         <img src={planetImage} alt="Planet Hackunia" className="planet-image" />
+        <img src={earthImage} alt="Earth" className="earth-image" />
       </div>
     </div>
   );

@@ -2,15 +2,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100vh;
+    height: 95vh;
     padding: 20px;
     background-color: #0a0a0a;
     color: white;
     text-align: left;
+    position: relative;
   }
   
   .content {
-    max-width: 600px;
+    max-width: 80%;
   }
   
   .image-container {
@@ -18,12 +19,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
   
   .planet-image {
-    max-width: 60%; /* Decreased size */
+    max-width: 50%; /* Decreased size */
     height: auto;
     border-radius: 10px; /* Optional: Add rounded corners */
+  }
+  
+  .earth-image {
+    position: absolute;
+    top: 50%;
+    left: 51.5%;
+    transform: translate(-50%, -50%);
+    width: 14%; /* Adjust size as needed */
+    height: auto;
+    border-radius: 50%; /* Make it round */
   }
   
   .main-title {
@@ -79,6 +91,10 @@
       max-width: 80%; /* Adjust size for smaller screens */
     }
   
+    .earth-image {
+      width: 15%; /* Adjust size for smaller screens */
+    }
+  
     .main-title {
       font-size: 2em;
     }
@@ -115,6 +131,10 @@
   
     .planet-image {
       max-width: 90%; /* Adjust size for smaller screens */
+    }
+  
+    .earth-image {
+      width: 20%; /* Adjust size for smaller screens */
     }
   }
   
