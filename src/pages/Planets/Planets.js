@@ -14,8 +14,8 @@ const Planets = () => {
   return (
     <div className="planets-container">
       <div className="content">
-        <h1 className="main-title">MANAGE</h1>
-        <h2 className="sub-title">PLANET HACKUNIA</h2>
+        <h1 className="main-title">MISSION: POSSIBLE</h1>
+        <h2 className="sub-title">Safeguarding Hacunia's Legacy</h2>
         <p className="description">
           Nulla interdum sollicitudin justo eget facilisis. Fusce sagittis
           maximus urna quis ultricies. Integer varius massa ac viverra feugiat.
