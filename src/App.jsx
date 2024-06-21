@@ -13,6 +13,7 @@ import Saturn from "./pages/Saturn/Saturn";
 import Uranus from "./pages/Uranus/Uranus";
 import Neptune from "./pages/Neptune/Neptune";
 import KeyVisual from "./components/KeyVisual/KeyVisual";
+import Planets from "./pages/Planets/Planets";
 
 const App = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const App = () => {
             <Route exact path="/saturn" element={<Saturn />} />
             <Route exact path="/uranus" element={<Uranus />} />
             <Route exact path="/neptune" element={<Neptune />} />
+            <Route exact path="/planets" element={<Planets />} />
             <Route
               exact
               path="/"

@@ -1,0 +1,120 @@
+.planets-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: #0a0a0a;
+    color: white;
+    text-align: left;
+  }
+  
+  .content {
+    max-width: 600px;
+  }
+  
+  .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .planet-image {
+    max-width: 60%; /* Decreased size */
+    height: auto;
+    border-radius: 10px; /* Optional: Add rounded corners */
+  }
+  
+  .main-title {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Change font */
+  }
+  
+  .sub-title {
+    font-size: 2.5em;
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif; /* Change font */
+  }
+  
+  .description {
+    font-size: 1.2em;
+    margin: 20px 0;
+    font-family: 'Arial', sans-serif; /* Change font */
+  }
+  
+  .start-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .start-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .planets-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .content {
+      max-width: 100%;
+    }
+  
+    .image-container {
+      margin-top: 20px;
+    }
+  
+    .planet-image {
+      max-width: 80%; /* Adjust size for smaller screens */
+    }
+  
+    .main-title {
+      font-size: 2em;
+    }
+  
+    .sub-title {
+      font-size: 1.5em;
+    }
+  
+    .description {
+      font-size: 1em;
+    }
+  
+    .start-button {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .main-title {
+      font-size: 1.5em;
+    }
+  
+    .sub-title {
+      font-size: 1.2em;
+    }
+  
+    .description {
+      font-size: 0.9em;
+    }
+  
+    .start-button {
+      font-size: 0.9em;
+    }
+  
+    .planet-image {
+      max-width: 90%; /* Adjust size for smaller screens */
+    }
+  }
+  
