@@ -9,8 +9,8 @@ const GridWrapper = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
-    width: 100%;
-    height: 100vh;
+    width: 98%;
+    height: 95vh;
     padding-left: 20px; /* Add padding on the left */
 
     @media (max-width: 1024px) {
@@ -24,7 +24,7 @@ const RightColumn = styled.div`
     display: grid;
     grid-template-rows: 3fr 1fr;
     gap: 20px;
-    height: 100%;
+    height: 90%;
 `;
 
 const Mercury = () => {
