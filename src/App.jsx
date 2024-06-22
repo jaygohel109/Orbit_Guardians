@@ -16,6 +16,7 @@ import KeyVisual from "./components/KeyVisual/KeyVisual";
 import Planets from "./pages/Planets/Planets";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Login/Signup";
+import ChatScreen from "./components/Chat/ChatScreen";
 
 const App = () => {
   const location = useLocation();
@@ -51,6 +52,7 @@ const App = () => {
                 <Route path="/uranus" element={<Uranus />} />
                 <Route path="/neptune" element={<Neptune />} />
                 <Route path="/planets" element={<Planets />} />
+                <Route path="/chat" element={<ChatScreen />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
               </Routes>

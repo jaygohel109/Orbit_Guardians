@@ -1,3 +1,4 @@
+// NavMobileStyles.js
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
@@ -76,9 +77,9 @@ export const List = styled(motion.ul)`
     z-index: 999;
 
     @media (min-width: 1025px) {
-        position: static;  // Adjust for larger screens
-        flex-flow: row;  // Change to row for larger screens
-        justify-content: center;  // Center the items
+        position: static;
+        flex-flow: row;
+        justify-content: center;
         padding: 0;
     }
 `;

@@ -1,3 +1,4 @@
+// NavDesktopStyles.js
 import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
@@ -15,7 +16,7 @@ export const List = styled.ul`
     @media (min-width: 1025px) {
         margin-top: 0;
         height: 100%;
-        justify-content: center;  // Center the items
+        justify-content: center;
     }
 `;
 

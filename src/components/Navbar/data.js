@@ -1,3 +1,4 @@
+// data.js
 export const planets = [
     {
         id: 0,
