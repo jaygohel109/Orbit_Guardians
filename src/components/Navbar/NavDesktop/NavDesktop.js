@@ -50,6 +50,19 @@ const NavDesktop = ({ pathName, activePlanet, onHover }) => {
                         Sign Up
                     </Link>
                 </Item>
+                <Item>
+                    <Link
+                        to="/chat"
+                        $bgcolor="#007bff"
+                        $isActive={pathName === '/chat'}
+                        onMouseOver={() => onHover('/chat')}
+                        onMouseLeave={() => onHover(false)}
+                        onFocus={() => onHover('/chat')}
+                        onBlur={() => onHover(false)}
+                    >
+                        Chat
+                    </Link>
+                </Item>
             </List>
         </Nav>
     );
