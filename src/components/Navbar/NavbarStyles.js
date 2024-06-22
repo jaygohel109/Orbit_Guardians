@@ -1,6 +1,17 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import OrbitronFont from '../../assets/Orbitron/static/Orbitron-Bold.ttf'; // Adjust the path as per your project structure
+
+// Define @font-face rule for Orbitron font
+const OrbitronFontFace = css`
+    @font-face {
+        font-family: 'Orbitron';
+        src: local('Orbitron'), url(${OrbitronFont}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+`;
 
 export const Header = styled(motion.header)`
     padding: 16px 24px;
@@ -39,7 +50,7 @@ export const Logo = styled.h1`
 
 export const LogoLink = styled(Link)`
     font-size: 28px;
-    font-family: ${(props) => props.theme.fonts.secondary};
+    font-family: 'Orbitron', sans-serif; /* Apply Orbitron font */
     color: ${(props) => props.theme.colors.white};
     text-transform: uppercase;
     letter-spacing: -1.05px;
