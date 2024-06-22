@@ -9,14 +9,13 @@
     align-items: center;
     height: 95vh;
     padding: 20px;
-    background-color: #0a0a0a;
     color: white;
     text-align: left;
     position: relative;
   }
   
   .content {
-    max-width: 80%;
+    max-width: 50%;
   }
   
   .image-container {
