@@ -1,65 +1,98 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import styled, { keyframes } from 'styled-components';
+import { FaExclamationTriangle } from 'react-icons/fa';
 
 const CardWrapper = styled.div`
     background: rgba(0, 0, 0, 0.5); /* Translucent background */
-    color: #fff; /* Hardcoded white color */
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Adjust width */
-    height: 100%; /* Adjust height */
-    margin: 20px auto; /* Add margin */
+    color: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: 'Arial', sans-serif;
 `;
 
 const CardTitle = styled.h2`
-    font-size: 1.5em;
-    margin-bottom: 20px; /* Add margin between heading and content */
+    font-size: 2em;
+    margin-bottom: 20px;
     text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 `;
 
 const CardContent = styled.div`
-    font-size: 1em;
-    overflow-y: auto;
-    flex-grow: 1; /* Ensure it takes up available space */
-    padding-right: 10px; /* For scrollbar space */
-    margin-top: 20px;
-    margin-bottom: 20px; /* Add margin to push content above button */
+    font-size: 1.2em;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
 `;
 
-const CardButton = styled.button`
-    background: #007bff; /* Hardcoded button color */
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1em;
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+
+const fadeOut = keyframes`
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+`;
+
+const ListItem = styled.li`
+    animation: ${({ fade }) => (fade === 'in' ? fadeIn : fadeOut)} 1s ease-in-out forwards;
+    list-style: none;
+    text-align: center;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 `;
 
 const WarningCard = ({ title, bulletPoints }) => {
-    const [showMore, setShowMore] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [fade, setFade] = useState('in');
 
-    const handleToggle = () => {
-        setShowMore(!showMore);
-    };
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFade('out');
+            setTimeout(() => {
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % bulletPoints.length);
+                setFade('in');
+            }, 1000); // Match this timeout with the fadeOut animation duration
+        }, 5000); // Duration each message is shown
+
+        return () => clearInterval(interval);
+    }, [bulletPoints.length]);
 
     return (
         <CardWrapper>
             <CardTitle>{title}</CardTitle>
-            <CardContent style={{ maxHeight: showMore ? 'none' : '500px' }}>
+            <CardContent>
                 <ul>
-                    {bulletPoints.map((point, index) => (
-                        <li key={index}>{point}</li>
-                    ))}
+                    <ListItem fade={fade}>
+                        <FaExclamationTriangle size={24} color="#ffcc00" />
+                        {bulletPoints[currentIndex]}
+                    </ListItem>
                 </ul>
             </CardContent>
-            {/* <CardButton onClick={handleToggle}>
-                {showMore ? 'Show less' : 'Read more'}
-            </CardButton> */}
         </CardWrapper>
     );
 };
