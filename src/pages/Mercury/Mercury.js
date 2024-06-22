@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import SectionCardSlider from '../../components/Cards/SectionCardSlider';
+import Card from '../../components/Cards/Card';
 import WarningCard from '../../components/Cards/WarningCard';
 import ContactCard from '../../components/Cards/ContactCard';
 import { hotNewsCards, warningCards, contactCardContent } from './data';
@@ -28,9 +28,23 @@ const RightColumn = styled.div`
 `;
 
 const Mercury = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleButtonClick = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % hotNewsCards.length);
+    };
+
+    const currentNews = hotNewsCards[currentIndex];
+
     return (
         <GridWrapper>
-            <SectionCardSlider cards={hotNewsCards} />
+            <Card
+                title={currentNews.title}
+                content={currentNews.content}
+                buttonText={currentNews.buttonText}
+                imageUrl={currentNews.imageUrl}
+                onClick={handleButtonClick}
+            />
             <RightColumn>
                 <WarningCard title="Warning" bulletPoints={warningCards} />
                 <ContactCard title="Contact Us" content={contactCardContent} />
