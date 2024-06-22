@@ -74,6 +74,13 @@ export const List = styled(motion.ul)`
     width: 100%;
     background: ${(props) => props.theme.colors.black};
     z-index: 999;
+
+    @media (min-width: 1025px) {
+        position: static;  // Adjust for larger screens
+        flex-flow: row;  // Change to row for larger screens
+        justify-content: center;  // Center the items
+        padding: 0;
+    }
 `;
 
 export const Item = styled(motion.li)`
