@@ -18,6 +18,7 @@ const CardWrapper = styled.div`
 const CardTitle = styled.h2`
     font-size: 1.5em;
     margin-bottom: 20px; /* Add margin between heading and content */
+    text-align: center;
 `;
 
 const CardContent = styled.div`
@@ -25,6 +26,7 @@ const CardContent = styled.div`
     overflow-y: auto;
     flex-grow: 1; /* Ensure it takes up available space */
     padding-right: 10px; /* For scrollbar space */
+    margin-top: 20px;
     margin-bottom: 20px; /* Add margin to push content above button */
 `;
 
@@ -48,16 +50,16 @@ const WarningCard = ({ title, bulletPoints }) => {
     return (
         <CardWrapper>
             <CardTitle>{title}</CardTitle>
-            <CardContent style={{ maxHeight: showMore ? 'none' : '200px' }}>
+            <CardContent style={{ maxHeight: showMore ? 'none' : '500px' }}>
                 <ul>
                     {bulletPoints.map((point, index) => (
                         <li key={index}>{point}</li>
                     ))}
                 </ul>
             </CardContent>
-            <CardButton onClick={handleToggle}>
+            {/* <CardButton onClick={handleToggle}>
                 {showMore ? 'Show less' : 'Read more'}
-            </CardButton>
+            </CardButton> */}
         </CardWrapper>
     );
 };
