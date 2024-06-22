@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Provider from "./components/Provider/Provider";
 import Wrapper from "./components/Wrapper/Wrapper";
@@ -14,38 +14,55 @@ import Uranus from "./pages/Uranus/Uranus";
 import Neptune from "./pages/Neptune/Neptune";
 import KeyVisual from "./components/KeyVisual/KeyVisual";
 import Planets from "./pages/Planets/Planets";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Login/Signup";
 
 const App = () => {
   const location = useLocation();
   const [activePlanet, setActivePlanet] = useState("/");
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Authentication state
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleSignup = () => {
+    setIsAuthenticated(true); // Update authentication state upon successful signup
+  };
 
   return (
     <Provider>
       <Wrapper>
-        <Navbar
-          pathName={location.pathname}
-          onHover={setActivePlanet}
-          activePlanet={activePlanet}
-        />
-        <AnimatePresence>
-          <Routes location={location} key={location.key}>
-            <Route exact path="/mercury" element={<Mercury />} />
-            <Route exact path="/venus" element={<Venus />} />
-            <Route exact path="/earth" element={<Earth />} />
-            <Route exact path="/mars" element={<Mars />} />
-            <Route exact path="/jupiter" element={<Jupiter />} />
-            <Route exact path="/saturn" element={<Saturn />} />
-            <Route exact path="/uranus" element={<Uranus />} />
-            <Route exact path="/neptune" element={<Neptune />} />
-            <Route exact path="/planets" element={<Planets />} />
-            <Route
-              exact
-              path="/"
-              Component={KeyVisual}
-              render={(props) => <KeyVisual activePlanet={activePlanet} />}
+        {isAuthenticated ? (
+          <>
+            <Navbar
+              pathName={location.pathname}
+              onHover={setActivePlanet}
+              activePlanet={activePlanet}
             />
+            <AnimatePresence>
+              <Routes location={location} key={location.key}>
+                <Route path="/mercury" element={<Mercury />} />
+                <Route path="/venus" element={<Venus />} />
+                <Route path="/earth" element={<Earth />} />
+                <Route path="/mars" element={<Mars />} />
+                <Route path="/jupiter" element={<Jupiter />} />
+                <Route path="/saturn" element={<Saturn />} />
+                <Route path="/uranus" element={<Uranus />} />
+                <Route path="/neptune" element={<Neptune />} />
+                <Route path="/planets" element={<Planets />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
+              </Routes>
+            </AnimatePresence>
+          </>
+        ) : (
+          <Routes location={location} key={location.key}>
+            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signup" element={<Signup onSignUP={handleSignup} />} />
+            <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
-        </AnimatePresence>
+        )}
       </Wrapper>
     </Provider>
   );
