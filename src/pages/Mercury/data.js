@@ -3,38 +3,46 @@ export const hotNewsCards = [
         title: 'BREAKING NEWS',
         content: '120 injuries in the last month. Nulla interdum sollicitudin justo eget facilisis.',
         buttonText: 'Read more',
+        imageUrl: 'https://picsum.photos/600/400?space',
     },
     {
         title: 'BREAKING NEWS',
         content: 'Another incident reported. Nulla interdum sollicitudin justo eget facilisis.',
         buttonText: 'Read more',
+        imageUrl: 'https://picsum.photos/600/400?galaxy',
     },
     {
         title: 'BREAKING NEWS',
         content: 'Alien sightings increase. Nulla interdum sollicitudin justo eget facilisis.',
         buttonText: 'Read more',
+        imageUrl: 'https://picsum.photos/600/400?star',
     },
     {
         title: 'BREAKING NEWS',
         content: 'Mysterious signals detected. Nulla interdum sollicitudin justo eget facilisis.',
         buttonText: 'Read more',
+        imageUrl: 'https://picsum.photos/600/400?sun',
     },
     {
         title: 'BREAKING NEWS',
         content: 'Unexpected weather changes. Nulla interdum sollicitudin justo eget facilisis.',
         buttonText: 'Read more',
+        imageUrl: 'https://picsum.photos/600/400?moon',
     },
     {
         title: 'BREAKING NEWS',
         content: 'Strange artifacts found. Nulla interdum sollicitudin justo eget facilisis.',
         buttonText: 'Read more',
+        imageUrl: 'https://picsum.photos/600/400?space',
     },
     {
         title: 'BREAKING NEWS',
         content: 'Community on high alert. Nulla interdum sollicitudin justo eget facilisis.',
         buttonText: 'Read more',
+        imageUrl: 'https://picsum.photos/600/400?neptune',
     },
 ];
+
 
 export const warningCards = [
     'ALIEN IN AREA. Nulla interdum sollicitudin justo eget facilisis.',

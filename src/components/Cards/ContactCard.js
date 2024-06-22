@@ -7,7 +7,8 @@ const CardWrapper = styled.div`
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 90%;
+    width: 95%;
+    height: auto; /* Set fixed height */
     max-width: 800px;
     margin: 20px auto;
     display: flex;
@@ -27,7 +28,7 @@ const CardTitle = styled.h2`
 const CardContent = styled.p`
     font-size: 1.2em;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 `;
 
 const ContactCard = ({ title, content }) => {
