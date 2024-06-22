@@ -8,10 +8,10 @@ const Navbar = ({ pathName, activePlanet, onHover }) => {
     const tabletBreakpoint = 768;
 
     useEffect(() => {
-        window.addEventListener('resize', () =>
-            setWindowWidth(window.innerWidth)
-        );
-    }, [windowWidth]);
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const containerVariants = {
         hidden: {
@@ -19,7 +19,7 @@ const Navbar = ({ pathName, activePlanet, onHover }) => {
         },
         visible: {
             opacity: 1,
-            transition: { delay: 1.5, duration: 4 },
+            transition: { delay: 0.1, duration: 1 },
         },
         exit: {
             opacity: 0,
@@ -36,7 +36,7 @@ const Navbar = ({ pathName, activePlanet, onHover }) => {
         >
             <Container>
                 <Logo>
-                    <LogoLink to="/">Orbit Guardians</LogoLink>
+                    <LogoLink to="/planets">Orbit Guardians</LogoLink>
                 </Logo>
                 {windowWidth >= tabletBreakpoint ? (
                     <NavDesktop
