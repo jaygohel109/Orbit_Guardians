@@ -25,7 +25,7 @@ export const Item = styled.li``;
 export const Link = styled(NavLink)`
     display: flex;
     position: relative;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 1px;
     line-height: 25px;
