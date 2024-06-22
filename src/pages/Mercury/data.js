@@ -1,34 +1,63 @@
-import mercuryImage from '../../assets/images/planet-mercury.svg';
-import mercuryInternalImage from '../../assets/images/planet-mercury-internal.svg';
-import mercuryGeoImage from '../../assets/images/planet-mercury-geology.png';
+export const hotNewsCards = [
+    {
+        title: 'Hot News 1!',
+        content: '120 injuries in the last month. Nulla interdum sollicitudin justo eget facilisis.',
+        buttonText: 'Read more',
+    },
+    {
+        title: 'Hot News 2!',
+        content: 'Another incident reported. Nulla interdum sollicitudin justo eget facilisis.',
+        buttonText: 'Read more',
+    },
+    {
+        title: 'Hot News 3!',
+        content: 'Alien sightings increase. Nulla interdum sollicitudin justo eget facilisis.',
+        buttonText: 'Read more',
+    },
+    {
+        title: 'Hot News 4!',
+        content: 'Mysterious signals detected. Nulla interdum sollicitudin justo eget facilisis.',
+        buttonText: 'Read more',
+    },
+    {
+        title: 'Hot News 5!',
+        content: 'Unexpected weather changes. Nulla interdum sollicitudin justo eget facilisis.',
+        buttonText: 'Read more',
+    },
+    {
+        title: 'Hot News 6!',
+        content: 'Strange artifacts found. Nulla interdum sollicitudin justo eget facilisis.',
+        buttonText: 'Read more',
+    },
+    {
+        title: 'Hot News 7!',
+        content: 'Community on high alert. Nulla interdum sollicitudin justo eget facilisis.',
+        buttonText: 'Read more',
+    },
+];
 
-export const data = {
-    name: 'Mercury',
-    overview: {
-        content:
-            "Mercury is the smallest planet in the Solar System and the closest to the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all the Sun's planets. Mercury is one of four terrestrial planets in the Solar System, and is a rocky body like Earth.",
-        source: 'https://en.wikipedia.org/wiki/Mercury_(planet)',
-        image: mercuryImage,
-    },
-    structure: {
-        content:
-            "Mercury appears to have a solid silicate crust and mantle overlying a solid, iron sulfide outer core layer, a deeper liquid core layer, and a solid inner core. The planet's density is the second highest in the Solar System at 5.427 g/cm3 , only slightly less than Earth's density.",
-        source: 'https://en.wikipedia.org/wiki/Mercury_(planet)#Internal_structure',
-        image: mercuryInternalImage,
-    },
-    geology: {
-        content:
-            "Mercury's surface is similar in appearance to that of the Moon, showing extensive mare-like plains and heavy cratering, indicating that it has been geologically inactive for billions of years. It is more heterogeneous than either Mars's or the Moon’s.",
-        source: 'https://en.wikipedia.org/wiki/Mercury_(planet)#Surface_geology',
-        image: mercuryImage,
-        geo: mercuryGeoImage,
-    },
-    sectionColor: 'hsl(194, 48%, 49%)',
-    desktopImgWidth: '290px',
-    tabletImgWidth: '184px',
-    mobileImgWidth: '111px',
-    rotation: '58.6 Days',
-    revolution: '87.97 Days',
-    radius: '2,439.7 KM',
-    temperature: '430°c',
-};
+export const warningCards = [
+    'ALIEN IN AREA. Nulla interdum sollicitudin justo eget facilisis.',
+    'Further reports of unusual activity.',
+    'Maintain vigilance at all times.',
+    'Report any suspicious activity immediately.',
+    'Avoid traveling alone at night.',
+    'Secure all entry points to your home.',
+    'Keep emergency contacts on speed dial.',
+    'Stay informed through official channels.',
+    'Participate in community watch programs.',
+    'Ensure your safety plan is up-to-date.',
+    // Duplicate items for testing scrolling
+    'ALIEN IN AREA. Nulla interdum sollicitudin justo eget facilisis.',
+    'Further reports of unusual activity.',
+    'Maintain vigilance at all times.',
+    'Report any suspicious activity immediately.',
+    'Avoid traveling alone at night.',
+    'Secure all entry points to your home.',
+    'Keep emergency contacts on speed dial.',
+    'Stay informed through official channels.',
+    'Participate in community watch programs.',
+    'Ensure your safety plan is up-to-date.',
+];
+
+export const contactCardContent = "For any inquiries, please contact us at contact@orbitguardians.com or call us at (123) 456-7890.";
