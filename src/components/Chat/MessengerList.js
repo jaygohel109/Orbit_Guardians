@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MessengerWrapper = styled.div`
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(240, 240, 240, 0.185);
     color: #fff;
     border-radius: 12px;
     padding: 20px;
@@ -18,13 +18,14 @@ const MessengerTitle = styled.h2`
     font-size: 1.5em;
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
 `;
 
 const MessengerItem = styled.div`
     display: flex;
     align-items: center;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(76, 151, 255, 0.4);
     border-radius: 10px;
     margin-bottom: 10px;
     cursor: pointer;
