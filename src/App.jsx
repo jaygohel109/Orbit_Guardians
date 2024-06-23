@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Provider from "./components/Provider/Provider";
@@ -17,6 +17,7 @@ import Planets from "./pages/Planets/Planets";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Login/Signup";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
+import ChatScreen from "./components/Chat/ChatScreen";
 import { supabase } from './supabaseClient';
 
 const App = () => {
@@ -24,12 +25,22 @@ const App = () => {
   const [activePlanet, setActivePlanet] = useState("/");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  useEffect(() => {
+    // Check localStorage for authentication status on component mount
+    const storedAuthStatus = localStorage.getItem('isAuthenticated');
+    if (storedAuthStatus) {
+      setIsAuthenticated(JSON.parse(storedAuthStatus));
+    }
+  }, []);
+
   const handleLogin = () => {
     setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', true); // Store authentication status in localStorage
   };
 
   const handleSignup = () => {
     setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', true); // Store authentication status in localStorage
   };
 
   return (
@@ -53,7 +64,7 @@ const App = () => {
                 <Route path="/uranus" element={<Uranus />} />
                 <Route path="/neptune" element={<Neptune />} />
                 <Route path="/planets" element={<Planets />} />
-                <Route path="/signup" element={<Signup onSignUp={handleSignup} />} />
+                <Route path="/chat" element={<ChatScreen />} /> 
                 <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
               </Routes>
             </AnimatePresence>
@@ -72,5 +83,3 @@ const App = () => {
 };
 
 export default App;
-
-

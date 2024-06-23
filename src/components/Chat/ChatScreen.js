@@ -8,8 +8,8 @@ const ChatScreenWrapper = styled.div`
     grid-template-columns: 1fr 2fr;
     gap: 20px;
     width: 100%;
-    height: 100vh;
-    padding: 20px;
+    height: 93vh;
+    padding: 40px;
     box-sizing: border-box;
 
     @media (max-width: 1024px) {
