@@ -10,8 +10,11 @@ const GridWrapper = styled.div`
     grid-template-columns: 2fr 1fr;
     gap: 20px;
     width: 98%;
-    height: 95vh;
+    height: 93vh;
     padding-left: 20px; /* Add padding on the left */
+    overflow: hidden;
+    box-sizing: border-box;
+    
 
     @media (max-width: 1024px) {
         grid-template-columns: 1fr;
