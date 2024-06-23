@@ -1,39 +1,61 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// src/pages/Login/Login.jsx
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { supabase } from '../../supabaseClient'; // Import the Supabase client
 import './Auth.css';
 
 const Login = ({ onLogin }) => {
-  const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your login logic here
-    onLogin(); // Call the onLogin prop to update the authentication state
-    navigate('/planets'); // Navigate after setting the authentication state
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
 
-  return (
-    <div className="auth-container">
-      <div className="website-name">
-        ORBIT GUARDIANS
-      </div>
-      <div className="auth-box">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" required />
-          </div>
-          <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-      </div>
-    </div>
-  );
+        if (error) {
+            alert('Login failed');
+        } else {
+            onLogin();
+            navigate('/planets');
+        }
+    };
+
+    return (
+        <div className="auth-container">
+            <div className="website-name">Orbit Guardians</div>
+            <div className="auth-box">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <p>
+                    Don't have an account? <Link to="/signup">Sign up</Link>
+                </p>
+            </div>
+        </div>
+    );
 };
 
 export default Login;
