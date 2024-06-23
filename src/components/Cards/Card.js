@@ -1,24 +1,42 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+`;
 
 const CardWrapper = styled.div`
-    background: rgba(0, 0, 0, 0.5); /* Translucent background */
+    background: rgba(240, 240, 240, 0.185); /* Translucent background */
     color: #fff; /* Hardcoded white color */
-    border-radius: 12px;
-    padding: 15px; /* Reduced padding */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
     width: 95%; /* Adjust width */
-    height: 300px; /* Set fixed height */
-    margin: 10px auto; /* Reduced margin */
+    max-width: 1200px; /* Adjust max width */
+    height: auto; /* Auto height */
+    margin: 20px auto; /* Adjust margin */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
+    animation: ${fadeIn} 1s ease-in-out;
+    margin-bottom: 20px; /* Adjust margin */
+    overflow: hidden;
 `;
 
 const CardTitle = styled.h2`
-    font-size: 1.2em; /* Reduced font size */
+    font-size: 2.0em; /* Reduced font size */
     margin-bottom: 15px; /* Reduced margin */
     text-align: center;
+    font-family: 'Orbitron', sans-serif; /* Apply Orbitron font */
 `;
 
 const CardContent = styled.div`
@@ -33,7 +51,7 @@ const CardContent = styled.div`
 
 const NewsText = styled.p`
     font-size: 1em; /* Reduced font size */
-    font-weight: bold;
+    font-weight: regular;
     text-align: center;
     margin: 10px 0;
 `;
