@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const ChatWrapper = styled.div`
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(240, 240, 240, 0.185);
     color: #fff;
     border-radius: 12px;
     padding: 20px;
@@ -19,6 +19,7 @@ const ChatHeader = styled.div`
     font-size: 1.5em;
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
 `;
 
 const ChatMessages = styled.div`
@@ -28,7 +29,7 @@ const ChatMessages = styled.div`
 `;
 
 const ChatMessage = styled.div`
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(76, 151, 255, 0.4);
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -53,19 +54,26 @@ const ChatInputWrapper = styled.div`
 const ChatInput = styled.input`
     flex-grow: 1;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 20px;
     border: none;
     margin-right: 10px;
 `;
 
 const ChatButton = styled.button`
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
     padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.2rem;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  
+  :hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
 `;
 
 const Chat = ({ messages, onSendMessage }) => {
