@@ -3,11 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
 const CardWrapper = styled.div`
-    background: rgba(0, 0, 0, 0.5); /* Translucent background */
     color: #fff;
-    border-radius: 15px;
-    padding: 15px; /* Reduced padding */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 95%; /* Adjust width */
     height: 500px; /* Set fixed height */
     margin: 10px auto; /* Reduced margin */
@@ -15,12 +11,21 @@ const CardWrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     font-family: 'Arial', sans-serif;
+    background: rgba(240, 240, 240, 0.185);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    text-align: center;
+    margin-top: 20px; /* Adjust margin */
+    animation: fadeIn 1s ease-in-out;
 `;
 
 const CardTitle = styled.h2`
-    font-size: 1.2em; /* Reduced font size */
+    font-size: 2.0em; /* Reduced font size */
     margin-bottom: 15px; /* Reduced margin */
     text-align: center;
+    font-family: 'Orbitron', sans-serif; /* Apply Orbitron font */
 `;
 
 const CardContent = styled.div`
@@ -34,11 +39,11 @@ const CardContent = styled.div`
 const fadeIn = keyframes`
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: scale(0.9);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
     }
 `;
 

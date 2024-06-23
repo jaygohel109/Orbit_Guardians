@@ -1,35 +1,48 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled , {keyframes}from 'styled-components';
+
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+`;
 
 const CardWrapper = styled.div`
-    background: rgba(0, 0, 0, 0.5); /* Translucent background */
     color: #fff;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    width: 95%;
-    height: auto; /* Set fixed height */
-    max-width: 800px;
-    margin: 20px auto;
+    width: 95%; /* Adjust width */
+    height: auto; /* Remove fixed height */
+    margin: 20px auto; /* Reduced margin */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-family: 'Arial', sans-serif;
+    background: rgba(240, 240, 240, 0.185);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
 `;
 
 const CardTitle = styled.h2`
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2.0em; /* Reduced font size */
+    margin-bottom: 15px; /* Reduced margin */
     text-align: center;
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    font-family: 'Orbitron', sans-serif; /* Apply Orbitron font */
 `;
 
 const CardContent = styled.p`
-    font-size: 1.2em;
+    font-size: 1em; /* Reduced font size */
     text-align: center;
-    margin-bottom: 0px;
 `;
+
 
 const ContactCard = ({ title, content }) => {
     return (
