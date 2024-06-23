@@ -31,6 +31,10 @@ const App = () => {
     if (storedAuthStatus) {
       setIsAuthenticated(JSON.parse(storedAuthStatus));
     }
+
+    return () => {
+      localStorage.removeItem('isAuthenticated'); // Clear localStorage on component unmount
+  };
   }, []);
 
   const handleLogin = () => {
