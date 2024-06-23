@@ -23,46 +23,6 @@ const NavDesktop = ({ pathName, activePlanet, onHover }) => {
                         </Link>
                     </Item>
                 ))}
-                {/* Static Links for Login and Signup */}
-                <Item>
-                    <Link
-                        to="/login"
-                        $bgcolor="#ffffff"
-                        $isActive={pathName === '/login'}
-                        onMouseOver={() => onHover('/login')}
-                        onMouseLeave={() => onHover(false)}
-                        onFocus={() => onHover('/login')}
-                        onBlur={() => onHover(false)}
-                    >
-                        Login
-                    </Link>
-                </Item>
-                <Item>
-                    <Link
-                        to="/signup"
-                        $bgcolor="#ffffff"
-                        $isActive={pathName === '/signup'}
-                        onMouseOver={() => onHover('/signup')}
-                        onMouseLeave={() => onHover(false)}
-                        onFocus={() => onHover('/signup')}
-                        onBlur={() => onHover(false)}
-                    >
-                        Sign Up
-                    </Link>
-                </Item>
-                <Item>
-                    <Link
-                        to="/chat"
-                        $bgcolor="#007bff"
-                        $isActive={pathName === '/chat'}
-                        onMouseOver={() => onHover('/chat')}
-                        onMouseLeave={() => onHover(false)}
-                        onFocus={() => onHover('/chat')}
-                        onBlur={() => onHover(false)}
-                    >
-                        Chat
-                    </Link>
-                </Item>
             </List>
         </Nav>
     );
