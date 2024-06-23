@@ -31,7 +31,7 @@ export const planets = [
     {
         id: 4,
         name: 'Jupiter',
-        path: '/jupiter',
+        path: '/chat',
         color: 'hsl(27, 75%, 70%)',
         sectionColor: 'hsl(2, 68%, 53%)',
     },
@@ -56,11 +56,11 @@ export const planets = [
         color: 'hsl(222, 95%, 63%)',
         sectionColor: 'hsl(222, 87%, 56%)',
     },
-    {
-        id: 8,
-        name: 'Chat',
-        path: '/chat',
-        color: 'hsl(240, 95%, 63%)',
-        sectionColor: 'hsl(240, 87%, 56%)',
-    },
+    // {
+    //     id: 8,
+    //     name: 'Chat',
+    //     path: '/chat',
+    //     color: 'hsl(240, 95%, 63%)',
+    //     sectionColor: 'hsl(240, 87%, 56%)',
+    // },
 ];
