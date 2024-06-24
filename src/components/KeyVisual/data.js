@@ -30,7 +30,7 @@ export const planets = [
     {
         id: 4,
         name: 'Jupiter',
-        path: '/jupiter',
+        path: '/chat',
         color: 'hsl(27, 75%, 70%)',
         sectionColor: 'hsl(2, 68%, 53%)',
     },

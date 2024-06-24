@@ -1,0 +1,8 @@
+/* src/pages/Neptune/Neptune.css */
+.neptune-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the page takes the full viewport height */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark translucent background */
+}
