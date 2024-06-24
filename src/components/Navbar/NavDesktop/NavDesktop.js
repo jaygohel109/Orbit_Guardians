@@ -1,7 +1,7 @@
-import { Nav, List, Item, Link } from './NavDesktopStyles';
+import { Nav, List, Item, Link, LogoutButton } from './NavDesktopStyles';
 import { planets } from '../data';
 
-const NavDesktop = ({ pathName, activePlanet, onHover }) => {
+const NavDesktop = ({ pathName, activePlanet, onHover, onLogout }) => {
     return (
         <Nav>
             <List>
@@ -23,6 +23,9 @@ const NavDesktop = ({ pathName, activePlanet, onHover }) => {
                         </Link>
                     </Item>
                 ))}
+                <Item>
+                    <LogoutButton onClick={onLogout}>Logout</LogoutButton>
+                </Item>
             </List>
         </Nav>
     );

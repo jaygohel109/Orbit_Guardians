@@ -3,7 +3,7 @@ import { Header, Logo, LogoLink, Container } from './NavbarStyles';
 import NavMobile from './NavMobile/NavMobile';
 import NavDesktop from './NavDesktop/NavDesktop';
 
-const Navbar = ({ pathName, activePlanet, onHover }) => {
+const Navbar = ({ pathName, activePlanet, onHover, onLogout }) => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const tabletBreakpoint = 768;
 
@@ -43,9 +43,13 @@ const Navbar = ({ pathName, activePlanet, onHover }) => {
                         pathName={pathName}
                         onHover={onHover}
                         activePlanet={activePlanet}
+                        onLogout={onLogout} // Pass onLogout to NavDesktop
                     />
                 ) : (
-                    <NavMobile windowWidth={windowWidth} />
+                    <NavMobile
+                        windowWidth={windowWidth}
+                        onLogout={onLogout} // Pass onLogout to NavMobile
+                    />
                 )}
             </Container>
         </Header>
