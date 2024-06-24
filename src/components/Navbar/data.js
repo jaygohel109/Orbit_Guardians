@@ -56,11 +56,4 @@ export const planets = [
         color: 'hsl(222, 95%, 63%)',
         sectionColor: 'hsl(222, 87%, 56%)',
     },
-    // {
-    //     id: 8,
-    //     name: 'Chat',
-    //     path: '/chat',
-    //     color: 'hsl(240, 95%, 63%)',
-    //     sectionColor: 'hsl(240, 87%, 56%)',
-    // },
 ];
