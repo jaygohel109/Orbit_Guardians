@@ -137,3 +137,55 @@ export const LogoutButton = styled.button`
     }
   }
 `;
+
+export const UserIcon = styled.div`
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: ${(props) => props.theme.colors.whiteAlpha75};
+  transition: background-color 300ms ease, color 300ms ease;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.whiteAlpha50};
+    color: ${(props) => props.theme.colors.white};
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px dashed ${(props) => props.theme.colors.redLight};
+    outline-offset: 3px;
+    background-color: ${(props) => props.theme.colors.whiteAlpha50};
+    color: ${(props) => props.theme.colors.white};
+  }
+`;
+
+export const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 150px;
+`;
+
+export const DropdownItem = styled.div`
+  padding: 10px;
+  cursor: pointer;
+  color: ${(props) => props.theme.colors.black};
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
