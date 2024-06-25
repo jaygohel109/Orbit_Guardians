@@ -60,20 +60,21 @@ const ChatInput = styled.input`
 `;
 
 const ChatButton = styled.button`
-    padding: 10px 20px;
+    width: 80px;  /* Fixed width for the button */
+    padding: 10px;
     border: none;
     border-radius: 20px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1em;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
   
-  :hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  }
+    :hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
 `;
 
 const Chat = ({ messages, onSendMessage }) => {
