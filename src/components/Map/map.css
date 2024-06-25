@@ -1,5 +1,59 @@
 .map-container {
     height: 400px;
-    width: 100%;
+    width: auto;
+    margin-top: 20px;/* Add padding on both sides */
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Optional: Box shadow for a pop effect */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInScale 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .button-container {
+    position: relative;
+    width: 200px;
+    height: 50px;
     margin-top: 20px;
+    bottom: 10px; /* Adjust as needed */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+  }
+  
+  .button-container button {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; /* Adjust height to match map-container */
+  }
+  
+  .loading-container svg {
+    color: #007bff; /* Adjust color as needed */
   }
