@@ -1,65 +1,118 @@
-/* src/components/FeedbackForm/FeedbackForm.css */
+@font-face {
+    font-family: 'Orbitron';
+    src: local('Orbitron'), url('../../assets/Orbitron/static/Orbitron-Bold.ttf') format('truetype');
+    /* Adjust the path to match your project structure */
+    font-weight: normal;
+    font-style: normal;
+  }
+
 .feedback-form-container {
-    max-width: 500px;
+    max-width: 800px;
     margin: auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8); /* Translucent background */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    color: white; /* Ensure text is readable on dark background */
-    font-family: 'Arial', sans-serif; /* Use a consistent font */
+    padding: 100px;
+    background: linear-gradient(135deg, rgba(45, 86, 188, 0.8), rgba(50, 50, 50, 0.8));
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(38, 51, 88, 0.5);
+    color: white; 
+    font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center; /* Center the text */
+    text-align: center;
+    transition: transform 0.3s ease;
+    
 }
 
 .feedback-form-container h2 {
+    font-family: 'Orbitron', sans-serif;
     margin-bottom: 20px;
-    color: white; /* Ensure text is readable on dark background */
+    color: #fff;
+    font-size: 2rem;
 }
-
+.title {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 2rem;
+}
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: 100%;
 }
 
 .form-group label {
+    font-family: 'Orbitron', sans-serif;
     display: block;
     margin-bottom: 5px;
-    color: white; /* Ensure text is readable on dark background */
+    color: #ddd;
+    font-size: 1rem;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
     box-sizing: border-box;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border 0.3s ease;
 }
 
-.form-group textarea {
-    height: 100px;
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #bbb;
+    font-style: italic;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #007bff;
+    outline: none;
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-p {
+button:focus {
+    outline: none;
+}
+
+.status-message {
     text-align: center;
-    margin-top: 10px;
-    color: green;
+    margin-top: 20px;
+    color: lightgreen;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .feedback-form-container {
+        padding: 20px;
+    }
+    
+    .feedback-form-container h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
 }

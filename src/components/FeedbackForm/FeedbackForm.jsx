@@ -1,8 +1,7 @@
-// src/components/FeedbackForm/FeedbackForm.jsx
 import React, { useState } from 'react';
-import { motion } from 'framer-motion'; // Correct import for framer-motion
-import { supabase } from '../../supabaseClient'; // Import the Supabase client
-import './FeedbackForm.css'; // Import CSS for styling
+import { motion } from 'framer-motion';
+import { supabase } from '../../supabaseClient';
+import './FeedbackForm.css';
 
 const FeedbackForm = () => {
     const [name, setName] = useState('');
@@ -32,7 +31,7 @@ const FeedbackForm = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="feedback-form-container">
-            <h2>Feedback Form</h2>
+            <h2 className='title'>FEEDBACK FORM</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Name</label>
@@ -41,6 +40,7 @@ const FeedbackForm = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        placeholder="Enter your name"
                     />
                 </div>
                 <div className="form-group">
@@ -50,6 +50,7 @@ const FeedbackForm = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        placeholder="Enter your email"
                     />
                 </div>
                 <div className="form-group">
@@ -58,10 +59,16 @@ const FeedbackForm = () => {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         required
+                        placeholder="Enter your message"
                     />
                 </div>
-                <button type="submit">Submit</button>
-                {status && <p>{status}</p>}
+                <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    type="submit">
+                    Submit
+                </motion.button>
+                {status && <motion.p className="status-message" animate={{ opacity: [0, 1, 0], transition: { duration: 2 } }}>{status}</motion.p>}
             </form>
         </motion.div>
     );
