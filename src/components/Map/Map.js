@@ -7,7 +7,7 @@ import { supabase } from '../../supabaseClient';
 import L from 'leaflet';
 import alienIconUrl from '../../assets/alien_pointer.png'; // Path to your alien icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon if using Font Awesome icons
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Example: Import a spinner icon from Font Awesome
+import { faSpinner,faSave,faTrash } from '@fortawesome/free-solid-svg-icons'; // Example: Import a spinner icon from Font Awesome
 import './map.css'; // Optional: Add custom styles for the map component
 import styled, { keyframes } from 'styled-components';
 
@@ -99,23 +99,43 @@ const MapComponent = () => {
   }, []);
 
   const handleSaveLocation = async () => {
-    if (userLocation) {
-      try {
-        const { data, error } = await supabase.from('map').insert([
-          { map_location: { latitude: userLocation[0], longitude: userLocation[1] } },
-        ]);
-        if (error) {
-          console.error('Error saving coordinates:', error.message);
-          return;
-        }
-        console.log('Coordinates saved successfully:', data);
-        // Update locations state to include newly saved location
-        setLocations([...locations, data[0]]);
-      } catch (error) {
-        console.error('Error saving coordinates:', error.message);
-      }
-    } else {
+    if (!userLocation) {
       console.error('User location not available.');
+      return;
+    }
+
+    try {
+      // Insert the new location
+      const { data: insertResult, error: insertError } = await supabase.from('map').insert([
+        { map_location: { latitude: userLocation[0], longitude: userLocation[1] } },
+      ]);
+
+      if (insertError) {
+        console.error('Error saving coordinates:', insertError.message);
+        return;
+      }
+
+      console.log('Coordinates saved successfully:', insertResult);
+      // Update locations state to include newly saved location
+      setLocations([...locations, insertResult[0]]);
+    } catch (error) {
+      console.error('Error saving coordinates:', error.message);
+    }
+  };
+
+  const handleRemoveLocation = async (id) => {
+    try {
+      const { data, error } = await supabase.from('map').delete().eq('id', id);
+      if (error) {
+        console.error('Error removing location:', error.message);
+        return;
+      }
+      console.log('Location removed successfully:', data);
+      // Update locations state after removal
+      const updatedLocations = locations.filter((loc) => loc.id !== id);
+      setLocations(updatedLocations);
+    } catch (error) {
+      console.error('Error removing location:', error.message);
     }
   };
 
@@ -125,7 +145,6 @@ const MapComponent = () => {
       {isLoading ? (
         <div className="loading-container">
           <FontAwesomeIcon icon={faSpinner} spin size="3x" /> {/* Example: Font Awesome spinner icon */}
-          {/* You can replace FontAwesomeIcon with your preferred loading icon */}
         </div>
       ) : (
         <MapContainer center={userLocation} zoom={13} className="map-container">
@@ -136,14 +155,19 @@ const MapComponent = () => {
           {locations.map((location) => (
             <Marker key={location.id} position={[location.map_location.latitude, location.map_location.longitude]} icon={alienIcon}>
               <Popup>
-                {/* Customize popup content here */}
-                Location ID: {location.id}
+                <p>Location ID: {location.id}</p>
+                <button className="delete-button" onClick={() => handleRemoveLocation(location.id)}>
+                  <FontAwesomeIcon icon={faTrash} /> Delete
+                </button>
               </Popup>
             </Marker>
           ))}
           <Marker position={userLocation} icon={alienIcon}>
             <Popup>
-              Your current location. <br /> Easily customizable.
+              Your current location. <br /> Easily customizable. <br />
+              {/* <button className="button-container" onClick={handleSaveLocation}>
+                <FontAwesomeIcon icon={faSave} /> Save Location
+              </button> */}
             </Popup>
           </Marker>
         </MapContainer>
