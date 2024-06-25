@@ -1,6 +1,6 @@
 {
   "homepage": "https://monicatvera.github.io/planets",
-  "name": "login",
+  "name": "local",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
@@ -14,10 +14,12 @@
     "axios": "^1.7.2",
     "framer-motion": "^10.18.0",
     "google-fonts": "^1.0.0",
+    "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icomoon": "^2.5.7",
     "react-icons": "^5.2.1",
+    "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
