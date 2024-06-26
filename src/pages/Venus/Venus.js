@@ -1,8 +1,8 @@
-import PlanetSection from '../../components/PlanetSection/PlanetSection';
 import { data } from './data';
+import PlanetSection from '../../components/NewVenus/PlanetSection';
 
 const Venus = () => {
-    return <PlanetSection planetData={data} />;
+    return <PlanetSection/>;
 };
 
 export default Venus;
