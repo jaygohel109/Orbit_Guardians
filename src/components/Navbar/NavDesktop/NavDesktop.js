@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Nav, List, Item, Link, UserIcon, DropdownMenu, DropdownItem, LogoutButton } from './NavDesktopStyles';
+import { Nav, List, Item, Link, UserIcon, DropdownMenu, DropdownItem, LogoutButton, PopupBox } from './NavDesktopStyles';
 import { planets } from '../data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const NavDesktop = ({ pathName, activePlanet, onHover, onLogout }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [popup, setPopup] = useState({ visible: false, x: 0, y: 0, text: '' });
 
     const handleUserIconClick = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -13,6 +14,18 @@ const NavDesktop = ({ pathName, activePlanet, onHover, onLogout }) => {
 
     const handleBlur = () => {
         setIsDropdownOpen(false);
+    };
+
+    const handleMouseOver = (e, text) => {
+        setPopup({ visible: true, x: e.clientX, y: e.clientY, text });
+    };
+
+    const handleMouseMove = (e) => {
+        setPopup((prev) => ({ ...prev, x: e.clientX, y: e.clientY }));
+    };
+
+    const handleMouseLeave = () => {
+        setPopup({ visible: false, x: 0, y: 0, text: '' });
     };
 
     return (
@@ -27,8 +40,9 @@ const NavDesktop = ({ pathName, activePlanet, onHover, onLogout }) => {
                                 planet.path === pathName ||
                                 planet.path === activePlanet
                             }
-                            onMouseOver={() => onHover(planet.path)}
-                            onMouseLeave={() => onHover(false)}
+                            onMouseOver={(e) => handleMouseOver(e, planet.info)}
+                            onMouseMove={handleMouseMove}
+                            onMouseLeave={handleMouseLeave}
                             onFocus={() => onHover(planet.path)}
                             onBlur={() => onHover(false)}
                         >
@@ -48,6 +62,14 @@ const NavDesktop = ({ pathName, activePlanet, onHover, onLogout }) => {
                     </UserIcon>
                 </Item>
             </List>
+            {popup.visible && (
+                <PopupBox
+                    className={popup.visible ? 'visible' : ''}
+                    style={{ top: popup.y + 20, left: popup.x }}
+                >
+                    {popup.text}
+                </PopupBox>
+            )}
         </Nav>
     );
 };
