@@ -1,8 +1,7 @@
-import PlanetSection from '../../components/PlanetSection/PlanetSection';
-import { data } from './data';
+import Chatbot from '../../components/Chatbot/Chatbot';
 
 const Saturn = () => {
-    return <PlanetSection planetData={data} />;
+    return <Chatbot/>;
 };
 
 export default Saturn;
