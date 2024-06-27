@@ -1,4 +1,3 @@
-// src/pages/Login/Login.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient'; // Import the Supabase client

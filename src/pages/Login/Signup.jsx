@@ -1,4 +1,3 @@
-// src/pages/Login/Signup.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../../supabaseClient'; // Import the Supabase client
@@ -8,13 +7,14 @@ const Signup = ({ onSignUp }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [username, setUsername] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
-            const { error } = await supabase.auth.signUp({
+            const { data: { user }, error } = await supabase.auth.signUp({
                 email,
                 password,
             });
@@ -22,7 +22,17 @@ const Signup = ({ onSignUp }) => {
             if (error) {
                 setMessage('Signup failed: ' + error.message);
             } else {
-                setMessage('Signup successful! Please check your email to confirm your account.');
+                const { error: insertError } = await supabase
+                    .from('user')
+                    .insert({ email: user.email, created_at: new Date(), username });
+
+                if (insertError) {
+                    console.error('Error inserting user data:', insertError.message);
+                } else {
+                    setMessage('Signup successful! Please check your email to confirm your account.');
+                    // Do not set the authentication status to true here, let the user verify their email first
+                    navigate('/verify-email'); // Redirect to a verification info page
+                }
             }
         } else {
             setMessage('Passwords do not match');
@@ -41,6 +51,15 @@ const Signup = ({ onSignUp }) => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                             required
                         />
                     </div>
