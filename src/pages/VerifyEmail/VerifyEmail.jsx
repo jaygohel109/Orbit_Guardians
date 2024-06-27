@@ -1,33 +1,25 @@
-// src/pages/VerifyEmail/VerifyEmail.jsx
-import React, { useEffect, useState } from 'react';
-import { supabase } from '../../supabaseClient'; // Import the Supabase client
-import '../Login/Auth.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const VerifyEmail = () => {
-    const [message, setMessage] = useState('');
-
-    useEffect(() => {
-        const handleEmailVerification = async () => {
-            const { data, error } = await supabase.auth.update({ email_confirm: true });
-
-            if (error) {
-                setMessage('Email verification failed: ' + error.message);
-            } else {
-                setMessage('Email verified successfully! You can now log in.');
-            }
-        };
-
-        handleEmailVerification();
-    }, []);
-
     return (
         <div className="auth-container">
+            <div className="website-name">Orbit Guardians</div>
             <div className="auth-box">
                 <h2>Email Verification</h2>
-                <p>{message}</p>
+                <p>
+                    A verification link has been sent to your email address. Please check your email and follow the instructions to verify your account.
+                </p>
+                <p>
+                    Once your email is verified, you will be able to log in.
+                </p>
+                <p>
+                    Already verified? <Link to="/login">Log in</Link>
+                </p>
             </div>
         </div>
     );
 };
 
 export default VerifyEmail;
+
