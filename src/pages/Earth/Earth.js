@@ -1,8 +1,10 @@
-import PlanetSection from '../../components/PlanetSection/PlanetSection';
-import { data } from './data';
+import React from 'react';
+import AlienInfoCards from './AlienInfoCards';
 
 const Earth = () => {
-    return <PlanetSection planetData={data} />;
+    return (
+        <AlienInfoCards />
+    );
 };
 
 export default Earth;
