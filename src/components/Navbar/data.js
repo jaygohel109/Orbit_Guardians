@@ -46,7 +46,7 @@ export const planets = [
         path: '/saturn',
         color: 'hsl(40, 96%, 70%)',
         sectionColor: 'hsl(17, 73%, 46%)',
-        info: 'Get trained in self-defense and learn fight lessons to protect yourself on Saturn.'
+        info: 'Get trained with our AI survival bot and learn escape strategies on Saturn.'
     },
     {
         id: 6,
