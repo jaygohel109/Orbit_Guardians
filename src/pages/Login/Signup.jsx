@@ -24,13 +24,14 @@ const Signup = ({ onSignUp }) => {
             } else {
                 const { error: insertError } = await supabase
                     .from('users')
-                    .insert({ email: user.email, created_at: new Date(), username });
+                    .insert({ id: user.id, email: user.email, created_at: new Date(), username });
 
                 if (insertError) {
                     console.error('Error inserting user data:', insertError.message);
                 } else {
                     setMessage('Signup successful! Please check your email to confirm your account.');
-                    // Do not set the authentication status to true here, let the user verify their email first
+                    console.log('Signup successful, user ID:', user.id); // Debugging log
+                    onSignUp(user.id); // Pass the user ID to the parent component
                     navigate('/verify-email'); // Redirect to a verification info page
                 }
             }
