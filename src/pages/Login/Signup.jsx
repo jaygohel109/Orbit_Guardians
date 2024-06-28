@@ -23,7 +23,7 @@ const Signup = ({ onSignUp }) => {
                 setMessage('Signup failed: ' + error.message);
             } else {
                 const { error: insertError } = await supabase
-                    .from('user')
+                    .from('users')
                     .insert({ email: user.email, created_at: new Date(), username });
 
                 if (insertError) {
