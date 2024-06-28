@@ -1,3 +1,4 @@
+
 export const planets = [
     {
         id: 0,
@@ -5,7 +6,7 @@ export const planets = [
         path: '/mercury',
         color: 'hsl(196, 83%, 93%)',
         sectionColor: 'hsl(194, 48%, 49%)',
-        info: 'Mercury is the closest planet to the Sun.'
+        info: 'Stay updated with the latest news and warnings about alien activities on Mercury.'
     },
     {
         id: 1,
@@ -13,7 +14,7 @@ export const planets = [
         path: '/venus',
         color: 'hsl(39, 88%, 73%)',
         sectionColor: 'hsl(33, 82%, 61%)',
-        info: 'Venus is the second planet from the Sun.'
+        info: 'Get essential health tips and resources to keep you safe and healthy on Venus.'
     },
     {
         id: 2,
@@ -21,7 +22,7 @@ export const planets = [
         path: '/earth',
         color: 'hsl(238, 99%, 66%)',
         sectionColor: 'hsl(263, 67%, 51%)',
-        info: 'Earth is our home planet.'
+        info: 'Learn about the strengths and weaknesses of different alien species on Earth.'
     },
     {
         id: 3,
@@ -29,7 +30,7 @@ export const planets = [
         path: '/mars',
         color: 'hsl(12, 100%, 64%)',
         sectionColor: 'hsl(10, 63%, 51%)',
-        info: 'Mars is the red planet.'
+        info: 'View the map to see locations where aliens have been spotted on Mars.'
     },
     {
         id: 4,
@@ -37,7 +38,7 @@ export const planets = [
         path: '/jupiter',
         color: 'hsl(27, 75%, 70%)',
         sectionColor: 'hsl(2, 68%, 53%)',
-        info: 'Jupiter is the largest planet.'
+        info: 'Chat with fellow citizens and share information about alien threats on Jupiter.'
     },
     {
         id: 5,
@@ -45,7 +46,7 @@ export const planets = [
         path: '/saturn',
         color: 'hsl(40, 96%, 70%)',
         sectionColor: 'hsl(17, 73%, 46%)',
-        info: 'Saturn is known for its rings.'
+        info: 'Get trained in self-defense and learn fight lessons to protect yourself on Saturn.'
     },
     {
         id: 6,
@@ -53,7 +54,7 @@ export const planets = [
         path: '/uranus',
         color: 'hsl(168, 82%, 67%)',
         sectionColor: 'hsl(169, 73%, 44%)',
-        info: 'Uranus is a blue planet.'
+        info: 'Stay tuned for exciting updates and features coming soon to Uranus.'
     },
     {
         id: 7,
@@ -61,6 +62,6 @@ export const planets = [
         path: '/neptune',
         color: 'hsl(222, 95%, 63%)',
         sectionColor: 'hsl(222, 87%, 56%)',
-        info: 'Neptune is the farthest planet.'
+        info: 'We value your feedback! Share your thoughts and experiences on Neptune.'
     },
 ];
