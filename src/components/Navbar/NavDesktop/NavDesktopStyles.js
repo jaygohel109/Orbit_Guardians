@@ -106,18 +106,29 @@ export const Link = styled(NavLink)`
 `;
 
 export const PopupBox = styled.div`
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 10px 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-  white-space: nowrap;
-  pointer-events: none;
-  transform: translate(-50%, 10px);
-  transition: opacity 200ms ease, transform 200ms ease;
-  opacity: 0;
+  // position: absolute;
+  // background-color: rgba(0, 0, 0, 0.8);
+  // color: #fff;
+  // padding: 10px 15px;
+  // border-radius: 8px;
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  // z-index: 1001;
+  // white-space: nowrap;
+  // pointer-events: none;
+  // transform: translate(-50%, 10px);
+  // transition: opacity 200ms ease, transform 200ms ease;
+  // opacity: 0;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 200px;
+    text-align: center;
+    white-space: normal;
 
   &.visible {
     opacity: 1;
