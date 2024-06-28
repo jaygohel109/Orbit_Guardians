@@ -11,7 +11,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
-    "@supabase/supabase-js": "^2.43.5",
+    "@supabase/supabase-js": "^2.44.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

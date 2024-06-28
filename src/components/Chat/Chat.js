@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { supabase } from '../../supabaseClient';
 
 const ChatWrapper = styled.div`
     background: rgba(240, 240, 240, 0.185);
@@ -77,13 +78,54 @@ const ChatButton = styled.button`
     }
 `;
 
-const Chat = ({ messages, onSendMessage }) => {
+const Chat = ({ conversationId, currentUserId }) => {
+    const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
 
-    const handleSendMessage = () => {
+    useEffect(() => {
+        fetchMessages();
+
+        const messageSubscription = supabase
+            .channel(`public:messages`)
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `conversation_id=eq.${conversationId}` }, (payload) => {
+                setMessages((currentMessages) => [...currentMessages, payload.new]);
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(messageSubscription);
+        };
+    }, [conversationId]);
+
+    const fetchMessages = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('messages')
+                .select('*')
+                .eq('conversation_id', conversationId)
+                .order('created_at', { ascending: true });
+
+            if (error) throw error;
+
+            setMessages(data);
+        } catch (error) {
+            console.error('Error fetching messages:', error.message);
+        }
+    };
+
+    const handleSendMessage = async () => {
         if (newMessage.trim()) {
-            onSendMessage(newMessage);
-            setNewMessage('');
+            try {
+                const { error } = await supabase
+                    .from('messages')
+                    .insert([{ content: newMessage, sender_id: currentUserId, conversation_id: conversationId }]);
+
+                if (error) throw error;
+
+                setNewMessage('');
+            } catch (error) {
+                console.error('Error sending message:', error.message);
+            }
         }
     };
 
@@ -93,7 +135,7 @@ const Chat = ({ messages, onSendMessage }) => {
             <ChatMessages>
                 {messages.map((message, index) => (
                     <ChatMessage key={index}>
-                        <ChatMessageSender>{message.sender}</ChatMessageSender>
+                        <ChatMessageSender>{message.sender_id}</ChatMessageSender>
                         <ChatMessageContent>{message.content}</ChatMessageContent>
                     </ChatMessage>
                 ))}

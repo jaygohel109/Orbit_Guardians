@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MessengerList from './MessengerList';
 import Chat from './Chat';
+import { supabase } from '../../supabaseClient';
+
 
 const ChatScreenWrapper = styled.div`
     display: grid;
@@ -18,46 +20,56 @@ const ChatScreenWrapper = styled.div`
     }
 `;
 
-const messengerItems = [
-    {
-        name: 'Juliett Doe',
-        description: 'Concept: Aliquam vel nibh quis libero viverra...',
-        image: 'https://via.placeholder.com/50',
-    },
-    {
-        name: 'Clara Doe',
-        description: 'Concept: Aliquam vel nibh quis libero viverra...',
-        image: 'https://via.placeholder.com/50',
-    },
-    {
-        name: 'John Smith',
-        description: 'Concept: Aliquam vel nibh quis libero viverra...',
-        image: 'https://via.placeholder.com/50',
-    },
-    {
-        name: 'Anny Doe',
-        description: 'Concept: Aliquam vel nibh quis libero viverra...',
-        image: 'https://via.placeholder.com/50',
-    },
-];
+const ChatScreen = ({ currentUserId }) => {
+    const [conversationId, setConversationId] = useState(null);
 
-const initialMessages = [
-    { sender: 'Support', content: 'Hi, how can I help you?' },
-    { sender: 'User', content: 'I need to find food around here' },
-    { sender: 'Support', content: 'Sure, there is a food location which is 3 km from you' },
-];
+    const handleStartConversation = async (otherUserId) => {
+        try {
+            const participants = [currentUserId].sort();
 
-const ChatScreen = () => {
-    const [messages, setMessages] = useState(initialMessages);
+            // Check if a conversation already exists between the two users
+            const { data: existingConversations, error: existingConversationsError } = await supabase
+                .from('conversations')
+                .select('id')
+                .contains('participants', participants);
 
-    const handleSendMessage = (newMessage) => {
-        setMessages([...messages, { sender: 'User', content: newMessage }]);
+            if (existingConversationsError) {
+                throw existingConversationsError;
+            }
+
+            let conversationId;
+            if (existingConversations.length > 0) {
+                // Conversation already exists
+                conversationId = existingConversations[0].id;
+            } else {
+                // Create a new conversation
+                const { data: newConversation, error: newConversationError } = await supabase
+                    .from('conversations')
+                    .insert([ {participants} ])
+                    .select('id')
+                    .single();
+
+                if (newConversationError) {
+                    throw newConversationError;
+                }
+
+                conversationId = newConversation.id;
+            }
+
+            setConversationId(conversationId);
+        } catch (error) {
+            console.error('Error starting conversation:', error.message);
+        }
     };
 
     return (
         <ChatScreenWrapper>
-            <MessengerList items={messengerItems} />
-            <Chat messages={messages} onSendMessage={handleSendMessage} />
+            <MessengerList onStartConversation={handleStartConversation} />
+            {conversationId ? (
+                <Chat conversationId={conversationId} currentUserId={currentUserId} />
+            ) : (
+                <div>Select a user to start a conversation</div>
+            )}
         </ChatScreenWrapper>
     );
 };

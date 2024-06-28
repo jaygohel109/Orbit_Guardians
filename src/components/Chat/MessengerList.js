@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { supabase } from '../../supabaseClient'; // Import supabase client
 
 const MessengerWrapper = styled.div`
     background: rgba(240, 240, 240, 0.185);
@@ -54,16 +55,36 @@ const MessengerItemDescription = styled.span`
     font-size: 0.9em;
 `;
 
-const MessengerList = ({ items }) => {
+const MessengerList = ({ onStartConversation }) => {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+    const fetchUsers = async () => {
+        try {
+            let { data: users, error } = await supabase.from('users').select('*');
+
+            if (error) {
+                throw error;
+            }
+
+            setUsers(users);
+        } catch (error) {
+            console.error('Error fetching users:', error.message);
+        }
+    };
+
     return (
         <MessengerWrapper>
             <MessengerTitle>Messenger</MessengerTitle>
-            {items.map((item, index) => (
-                <MessengerItem key={index}>
-                    <MessengerItemImage src={item.image} alt={item.name} />
+            {users.map((user) => (
+                <MessengerItem key={user.id} onClick={() => onStartConversation(user.id)}>
+                    <MessengerItemImage src={`https://gravatar.com/avatar/${user.id}?d=identicon`} alt={user.username} />
                     <MessengerItemContent>
-                        <MessengerItemName>{item.name}</MessengerItemName>
-                        <MessengerItemDescription>{item.description}</MessengerItemDescription>
+                        <MessengerItemName>{user.username}</MessengerItemName>
+                        <MessengerItemDescription>{user.email}</MessengerItemDescription>
                     </MessengerItemContent>
                 </MessengerItem>
             ))}
