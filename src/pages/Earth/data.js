@@ -1,34 +1,53 @@
-import earthImage from '../../assets/images/planet-earth.svg';
-import earthInternalImage from '../../assets/images/planet-earth-internal.svg';
-import earthGeoImage from '../../assets/images/planet-earth-geology.png';
+import alien1 from '../../assets/images/alien1.png';
+import alien2 from '../../assets/images/alien2.png';
+import alien3 from '../../assets/images/alien3.png';
+import alien4 from '../../assets/images/alien4.jpeg';
+import alien5 from '../../assets/images/alien5.jpeg';
 
-export const data = {
-    name: 'Earth',
-    overview: {
-        content:
-            "Third planet from the Sun and the only known planet to harbor life. About 29.2% of Earth's surface is land with remaining 70.8% is covered with water. Earth's distance from the Sun, physical properties and geological history have allowed life to evolve and thrive.",
-        source: 'https://en.wikipedia.org/wiki/Earth',
-        image: earthImage,
+export const alienData = [
+    {
+        name: 'Mind Manipulators',
+        description: 'Mind Manipulators are slender, ethereal aliens with tentacle-like appendages. They can project psychic waves to control or confuse their prey.',
+        strengths: 'Psychic control, levitation, hard to detect.',
+        weaknesses: 'Disrupted by EMPs, weak structure.',
+        howToKill: 'EMP grenades, physical attacks, avoid eye contact.',
+        escape: 'Use mind protection gear, avoid active areas, stay in groups.',
+        image: alien1,
     },
-    structure: {
-        content:
-            "Earth's interior, like that of the other terrestrial planets, is divided into layers by their chemical or physical (rheological) properties. The outer layer is a chemically distinct silicate solid crust, which is underlain by a highly viscous solid mantle.",
-        source: 'https://en.wikipedia.org/wiki/Earth#Internal_structure',
-        image: earthInternalImage,
+    {
+        name: 'Strong Smashers',
+        description: 'Strong Smashers are bulky aliens with immense physical strength. They can crush obstacles and opponents with ease.',
+        strengths: 'Immense strength, physical resilience.',
+        weaknesses: 'Slow movement, low intelligence.',
+        howToKill: 'High-speed attacks, targeting weak points.',
+        escape: 'Avoid direct confrontation, use traps.',
+        image: alien2,
     },
-    geology: {
-        content:
-            'The total surface area of Earth is about 510 million km2. The continental crust consists of lower density material such as the igneous rocks granite and andesite. Less common is basalt, a denser volcanic rock that is the primary constituent of the ocean floors.',
-        source: 'https://en.wikipedia.org/wiki/Earth#Surface',
-        image: earthImage,
-        geo: earthGeoImage,
+    {
+        name: 'Stealth Stalkers',
+        description: 'Stealth Stalkers are agile aliens with the ability to become nearly invisible. They are masters of surprise attacks.',
+        strengths: 'Invisibility, agility, stealth.',
+        weaknesses: 'Weak defense, easily startled.',
+        howToKill: 'Thermal vision, loud noises.',
+        escape: 'Stay in well-lit areas, use noise makers.',
+        image: alien3,
     },
-    sectionColor: 'hsl(263, 67%, 51%)',
-    desktopImgWidth: '450px',
-    tabletImgWidth: '285px',
-    mobileImgWidth: '173px',
-    rotation: '0.99 Days',
-    revolution: '365.26 Days',
-    radius: '6,371 KM',
-    temperature: '16°c',
-};
+    {
+        name: 'Fire Flyers',
+        description: 'Fire Flyers are winged aliens capable of spitting fire. They are swift and can attack from above.',
+        strengths: 'Flight, fire attacks, speed.',
+        weaknesses: 'Water, ice, grounded attacks.',
+        howToKill: 'Water cannons, ice traps.',
+        escape: 'Stay indoors, use water for defense.',
+        image: alien4,
+    },
+    {
+        name: 'Mind Readers',
+        description: 'Mind Readers are telepathic aliens that can anticipate movements by reading thoughts. They are strategic and cunning.',
+        strengths: 'Telepathy, strategic thinking.',
+        weaknesses: 'Mental overload, physical attacks.',
+        howToKill: 'Mental blockers, fast and unpredictable movements.',
+        escape: 'Use mental shields, avoid thinking about plans.',
+        image: alien5,
+    },
+];
