@@ -26,34 +26,39 @@ const App = () => {
   const [activePlanet, setActivePlanet] = useState("/");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [currentUserId, setCurrentUserId] = useState(null);
 
   useEffect(() => {
     // Check localStorage for authentication status on component mount
     const storedAuthStatus = localStorage.getItem('isAuthenticated');
-    console.log('Stored Auth Status:', storedAuthStatus); // Debugging log
-    if (storedAuthStatus) {
+    const storedUserId = localStorage.getItem('currentUserId');
+    if (storedAuthStatus && storedUserId) {
       setIsAuthenticated(JSON.parse(storedAuthStatus));
+      setCurrentUserId(storedUserId);
     }
     setLoading(false); // Set loading to false after checking authentication status
   }, []); // The empty dependency array ensures this runs only once when the component mounts
 
-  const handleLogin = () => {
+  const handleLogin = (userId) => {
     setIsAuthenticated(true);
+    setCurrentUserId(userId);
     localStorage.setItem('isAuthenticated', true); // Store authentication status in localStorage
-    console.log('User logged in, isAuthenticated set to true'); // Debugging log
+    localStorage.setItem('currentUserId', userId); // Store current user ID in localStorage
   };
 
-  const handleSignup = () => {
+  const handleSignup = (userId) => {
     setIsAuthenticated(true);
+    setCurrentUserId(userId);
     localStorage.setItem('isAuthenticated', true); // Store authentication status in localStorage
-    console.log('User signed up, isAuthenticated set to true'); // Debugging log
+    localStorage.setItem('currentUserId', userId); // Store current user ID in localStorage
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    setCurrentUserId(null);
     localStorage.removeItem('isAuthenticated'); // Clear authentication status in localStorage
+    localStorage.removeItem('currentUserId'); // Clear current user ID in localStorage
     navigate('/login'); // Redirect to login page
-    console.log('User logged out, isAuthenticated set to false'); // Debugging log
   };
 
   if (loading) {
@@ -78,12 +83,12 @@ const App = () => {
                 <Route path="/venus" element={<Venus />} />
                 <Route path="/earth" element={<Earth />} />
                 <Route path="/mars" element={<Mars />} />
-                <Route path="/jupiter" element={<ChatScreen />} />
+                <Route path="/jupiter" element={<ChatScreen currentUserId={currentUserId} />} />
                 <Route path="/saturn" element={<Saturn />} />
                 <Route path="/uranus" element={<Uranus />} />
                 <Route path="/neptune" element={<Neptune />} />
                 <Route path="/planets" element={<Planets />} />
-                <Route path="/chat" element={<ChatScreen />} />
+                <Route path="/chat" element={<ChatScreen currentUserId={currentUserId} />} />
                 <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
               </Routes>
             </AnimatePresence>
