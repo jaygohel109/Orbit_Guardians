@@ -78,7 +78,7 @@ const App = () => {
                 <Route path="/venus" element={<Venus />} />
                 <Route path="/earth" element={<Earth />} />
                 <Route path="/mars" element={<Mars />} />
-                <Route path="/jupiter" element={<Jupiter />} />
+                <Route path="/jupiter" element={<ChatScreen />} />
                 <Route path="/saturn" element={<Saturn />} />
                 <Route path="/uranus" element={<Uranus />} />
                 <Route path="/neptune" element={<Neptune />} />
