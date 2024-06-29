@@ -70,7 +70,7 @@ const ChatButton = styled.button`
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  
+
     :hover {
         background-color: #0056b3;
         transform: scale(1.05);
@@ -78,17 +78,19 @@ const ChatButton = styled.button`
     }
 `;
 
-const Chat = ({ conversationId, currentUserId }) => {
+const Chat = ({ conversationId, currentUserId, selectedUser }) => {
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
+    const [usernames, setUsernames] = useState({}); // Store usernames
 
     useEffect(() => {
         fetchMessages();
 
         const messageSubscription = supabase
-            .channel(`public:messages`)
+            .channel('public:messages')
             .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages', filter: `conversation_id=eq.${conversationId}` }, (payload) => {
                 setMessages((currentMessages) => [...currentMessages, payload.new]);
+                fetchUsername(payload.new.sender_id); // Fetch username for the new message
             })
             .subscribe();
 
@@ -108,19 +110,39 @@ const Chat = ({ conversationId, currentUserId }) => {
             if (error) throw error;
 
             setMessages(data);
+            data.forEach(message => fetchUsername(message.sender_id)); // Fetch usernames for existing messages
         } catch (error) {
             console.error('Error fetching messages:', error.message);
+        }
+    };
+
+    const fetchUsername = async (userId) => {
+        if (!usernames[userId]) {
+            const { data, error } = await supabase
+                .from('users')
+                .select('username')
+                .eq('id', userId)
+                .single();
+
+            if (data) {
+                setUsernames((prevUsernames) => ({ ...prevUsernames, [userId]: data.username }));
+            }
         }
     };
 
     const handleSendMessage = async () => {
         if (newMessage.trim()) {
             try {
-                const { error } = await supabase
+                const { data, error } = await supabase
                     .from('messages')
-                    .insert([{ content: newMessage, sender_id: currentUserId, conversation_id: conversationId }]);
+                    .insert([{ content: newMessage, sender_id: currentUserId, conversation_id: conversationId }])
+                    .select();
 
                 if (error) throw error;
+
+                // Update the messages state immediately
+                setMessages((currentMessages) => [...currentMessages, data[0]]);
+                fetchUsername(data[0].sender_id); // Fetch username for the new message
 
                 setNewMessage('');
             } catch (error) {
@@ -131,11 +153,11 @@ const Chat = ({ conversationId, currentUserId }) => {
 
     return (
         <ChatWrapper>
-            <ChatHeader>Chat</ChatHeader>
+            <ChatHeader>{selectedUser.username}</ChatHeader>
             <ChatMessages>
                 {messages.map((message, index) => (
                     <ChatMessage key={index}>
-                        <ChatMessageSender>{message.sender_id}</ChatMessageSender>
+                        <ChatMessageSender>{usernames[message.sender_id] || message.sender_id}</ChatMessageSender>
                         <ChatMessageContent>{message.content}</ChatMessageContent>
                     </ChatMessage>
                 ))}
