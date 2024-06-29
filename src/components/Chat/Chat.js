@@ -7,6 +7,7 @@ const ChatWrapper = styled.div`
     color: #fff;
     border-radius: 12px;
     padding: 20px;
+    padding-bottom: 40px; /* Add padding at the bottom */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 100%;
@@ -14,6 +15,7 @@ const ChatWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-y: auto; /* Add this to enable scrolling */
 `;
 
 const ChatHeader = styled.div`
