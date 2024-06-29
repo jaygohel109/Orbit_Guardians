@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import MessengerList from './MessengerList';
 import Chat from './Chat';
 import { supabase } from '../../supabaseClient';
-
 
 const ChatScreenWrapper = styled.div`
     display: grid;
@@ -22,10 +21,18 @@ const ChatScreenWrapper = styled.div`
 
 const ChatScreen = ({ currentUserId }) => {
     const [conversationId, setConversationId] = useState(null);
+    const [selectedUser, setSelectedUser] = useState(null);
 
-    const handleStartConversation = async (otherUserId) => {
+    const handleStartConversation = async (otherUserId, otherUsername) => {
         try {
-            const participants = [currentUserId].sort();
+            console.log('currentUserId:', currentUserId);
+            console.log('otherUserId:', otherUserId);
+
+            if (!currentUserId || !otherUserId) {
+                throw new Error('User IDs must be valid UUIDs');
+            }
+
+            const participants = [currentUserId, otherUserId].sort(); // Ensure correct participant order
 
             // Check if a conversation already exists between the two users
             const { data: existingConversations, error: existingConversationsError } = await supabase
@@ -45,7 +52,7 @@ const ChatScreen = ({ currentUserId }) => {
                 // Create a new conversation
                 const { data: newConversation, error: newConversationError } = await supabase
                     .from('conversations')
-                    .insert([ {participants} ])
+                    .insert([{ participants }])
                     .select('id')
                     .single();
 
@@ -57,6 +64,7 @@ const ChatScreen = ({ currentUserId }) => {
             }
 
             setConversationId(conversationId);
+            setSelectedUser({ id: otherUserId, username: otherUsername });
         } catch (error) {
             console.error('Error starting conversation:', error.message);
         }
@@ -64,9 +72,9 @@ const ChatScreen = ({ currentUserId }) => {
 
     return (
         <ChatScreenWrapper>
-            <MessengerList onStartConversation={handleStartConversation} />
+            <MessengerList onStartConversation={handleStartConversation} currentUserId={currentUserId} />
             {conversationId ? (
-                <Chat conversationId={conversationId} currentUserId={currentUserId} />
+                <Chat conversationId={conversationId} currentUserId={currentUserId} selectedUser={selectedUser} />
             ) : (
                 <div>Select a user to start a conversation</div>
             )}

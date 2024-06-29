@@ -10,7 +10,7 @@ const Login = ({ onLogin }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
@@ -18,8 +18,13 @@ const Login = ({ onLogin }) => {
         if (error) {
             alert('Login failed');
         } else {
-            onLogin();
-            navigate('/planets');
+            const user = data.user;
+            if (user) {
+                onLogin(user.id); // Pass the user ID to the parent component
+                navigate('/planets');
+            } else {
+                alert('Login failed');
+            }
         }
     };
 
