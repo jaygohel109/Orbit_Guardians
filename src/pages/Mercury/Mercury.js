@@ -9,17 +9,14 @@ const GridWrapper = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 20px;
-    width: 98%;
-    height: 93vh;
-    padding-left: 20px; /* Add padding on the left */
-    overflow: hidden;
+    width: 100%;
+    height: auto;
+    padding: 20px;
     box-sizing: border-box;
-    
 
     @media (max-width: 1024px) {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
-        padding-left: 0;
     }
 `;
 
@@ -27,7 +24,10 @@ const RightColumn = styled.div`
     display: grid;
     grid-template-rows: 3fr 1fr;
     gap: 20px;
-    height: 90%;
+
+    @media (max-width: 1024px) {
+        grid-template-rows: auto auto;
+    }
 `;
 
 const Mercury = () => {
