@@ -1,8 +1,7 @@
-import PlanetSection from '../../components/PlanetSection/PlanetSection';
-import { data } from './data';
+import UranusEducation from '../../components/newuranus/UranusEducation';
 
 const Uranus = () => {
-    return <PlanetSection planetData={data} />;
+    return <UranusEducation/>;
 };
 
 export default Uranus;
