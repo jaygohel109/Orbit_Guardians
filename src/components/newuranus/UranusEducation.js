@@ -247,6 +247,7 @@ const Tab = styled.button`
     transition: background-color 0.3s ease, color 0.3s ease;
     font-size: 1em;
     font-weight: bold;
+    margin: 0 10px; // Add margin to create space between tabs
 
     &:hover {
         background-color: #3498db;
