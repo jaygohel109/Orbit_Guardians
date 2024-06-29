@@ -1,121 +1,140 @@
 @font-face {
   font-family: 'Orbitron';
   src: local('Orbitron'), url('../../assets/Orbitron/static/Orbitron-Bold.ttf') format('truetype');
-  /* Adjust the path to match your project structure */
   font-weight: normal;
   font-style: normal;
 }
 
 .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: url('/src/assets/images/background-stars.svg') no-repeat center center fixed;
-    background-size: cover;
-    flex-direction: column; /* Ensure flex-direction is column for vertical alignment */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/src/assets/images/background-stars.svg') no-repeat center center fixed;
+  background-size: cover;
+  flex-direction: column;
+  overflow-y: auto; /* Ensure content is scrollable */
+  padding: 20px; /* Add padding to prevent cut-off */
+}
+
+.website-name {
+  font-family: 'Orbitron', sans-serif;
+  color: #0056b3;
+  font-size: 5rem;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 30px;
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+  max-width: 400px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 20px; /* Ensure margin on smaller screens */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  color: #333;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+button {
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.auth-box h2 {
+  color: white;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.auth-box p {
+  color: white;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.auth-box p a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.auth-box p a:hover {
+  color: #0056b3;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
   .website-name {
-    font-family: 'Orbitron', sans-serif;
-    color: #0056b3;
-    font-size: 5rem;
-    text-align: center;
-    margin-top: 2rem; /* Adjust margin-top to create space */
-    margin-bottom: 30px;
+    font-size: 3rem;
+    margin-bottom: 20px;
   }
-  
+
   .auth-box {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
-    text-align: center;
-    animation: fadeIn 1s ease-in-out;
-    max-width: 400px;
-    width: 100%;
+    padding: 1.5rem;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: white;
-    font-size: 1.2rem;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.5);
-    color: #333;
-    transition: background 0.3s, box-shadow 0.3s;
-  }
-  
-  .form-group input:focus {
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  }
-  
+
   button {
-    padding: 1rem 3rem;
-    border: none;
-    border-radius: 10px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  }
-  
-  button:active {
-    transform: scale(0.98);
-  }
-  
-  .auth-box h2 {
-    color: white;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-  }
-  
-  .auth-box p {
-    color: white;
-    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
     font-size: 1rem;
   }
-  
-  .auth-box p a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .auth-box p a:hover {
-    color: #0056b3;
-  }
-  
+}
