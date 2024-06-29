@@ -78,6 +78,7 @@ const App = () => {
             />
             <AnimatePresence>
               <Routes location={location} key={location.key}>
+              <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
                 <Route path="/" element={<Navigate to="/planets" />} />
                 <Route path="/mercury" element={<Mercury />} />
                 <Route path="/venus" element={<Venus />} />
@@ -89,7 +90,7 @@ const App = () => {
                 <Route path="/neptune" element={<Neptune />} />
                 <Route path="/planets" element={<Planets />} />
                 <Route path="/chat" element={<ChatScreen currentUserId={currentUserId} />} />
-                <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
+                <Route path="/chat" element={<ChatScreen />} />
               </Routes>
             </AnimatePresence>
           </>
