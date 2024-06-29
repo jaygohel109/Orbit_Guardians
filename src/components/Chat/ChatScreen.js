@@ -10,8 +10,10 @@ const ChatScreenWrapper = styled.div`
     gap: 20px;
     width: 100%;
     height: 93vh;
-    padding: 40px;
+    padding: 20px;
+    padding-bottom: 40px; /* Add padding at the bottom */
     box-sizing: border-box;
+    overflow: hidden; /* Add this to prevent overflow */
 
     @media (max-width: 1024px) {
         grid-template-columns: 1fr;
