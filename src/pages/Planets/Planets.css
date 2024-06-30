@@ -56,7 +56,7 @@
   }
   
   .description {
-    font-size: 1.2em;
+    font-size: 0.9em;
     margin: 20px 0;
     font-family: 'Arial', sans-serif; /* Change font */
   }
@@ -108,7 +108,7 @@
     }
   
     .description {
-      font-size: 1em;
+      font-size: 0.9em;
     }
   
     .start-button {
