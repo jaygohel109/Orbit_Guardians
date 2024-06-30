@@ -17,8 +17,7 @@ const Planets = () => {
         <h1 className="main-title">MISSION: POSSIBLE</h1>
         <h2 className="sub-title">Safeguarding Hacunia's Legacy</h2>
         <p className="description">
-          Nulla interdum sollicitudin justo eget facilisis. Fusce sagittis
-          maximus urna quis ultricies. Integer varius massa ac viverra feugiat.
+        The people of Planet Hackunia need your courage to overcome the alien invasion threatening our existence. Orbit Guardian is here to provide you with all the resources, tools, and information you need to survive and thrive during this crisis.
         </p>
         <button className="start-button" onClick={handleButtonClick}>
           START
