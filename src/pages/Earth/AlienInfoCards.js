@@ -19,10 +19,10 @@ const AlienInfoCards = () => {
                     <h2>{name}</h2>
                     <p>{description}</p>
                     <ul>
-                        <li><strong>Strengths:</strong>{strengths}</li>
-                        <li><strong>Weaknesses:</strong> {weaknesses}</li>
-                        <li><strong>How to Kill:</strong> {howToKill}</li>
-                        <li><strong>Escape:</strong> {escape}</li>
+                        <li><strong>Strengths:- </strong>{strengths}</li>
+                        <li><strong>Weaknesses:- </strong> {weaknesses}</li>
+                        <li><strong>How to Kill:- </strong> {howToKill}</li>
+                        <li><strong>Escape:- </strong> {escape}</li>
                     </ul>
                 </AlienInfo>
             </Card>
