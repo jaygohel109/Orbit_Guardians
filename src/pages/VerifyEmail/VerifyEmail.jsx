@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../Login/Auth.css';  // Adjust the path to match your project structure
 
 const VerifyEmail = () => {
     return (
@@ -22,4 +23,3 @@ const VerifyEmail = () => {
 };
 
 export default VerifyEmail;
-
