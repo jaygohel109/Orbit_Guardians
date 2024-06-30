@@ -1,45 +1,60 @@
+import launchSatellite from '../../assets/images/news/launch_satellite.png';
+import developAi from '../../assets/images/news/develop_ai.png';
+import inspirationalMurals from '../../assets/images/news/inspirational_murals.png';
+import communicationTools from '../../assets/images/news/communication_tools.png';
+import mentalHealthSupport from '../../assets/images/news/mental_health_support.png';
+import resourceDistribution from '../../assets/images/news/resource_distribution.png';
+import setupSafeZones from '../../assets/images/news/setup_safe_zones.png';
+import trainingProgram from '../../assets/images/news/training_program.png';
+
 export const hotNewsCards = [
     {
         title: 'BREAKING NEWS',
-        content: '120 injuries in the last month. Nulla interdum sollicitudin justo eget facilisis.',
+        content: 'SpaceTec Launches New Satellite for Improved Crisis Management.',
         buttonText: 'Read more',
-        imageUrl: 'https://picsum.photos/600/400?space',
+        imageUrl: launchSatellite,
     },
     {
         title: 'BREAKING NEWS',
-        content: 'Another incident reported. Nulla interdum sollicitudin justo eget facilisis.',
+        content: 'Community Volunteers Set Up New Safe Zones Across Hackunia.',
         buttonText: 'Read more',
-        imageUrl: 'https://picsum.photos/600/400?galaxy',
+        imageUrl: setupSafeZones,
     },
     {
         title: 'BREAKING NEWS',
-        content: 'Alien sightings increase. Nulla interdum sollicitudin justo eget facilisis.',
+        content: 'Hackunia University Develops AI to Predict Alien Movements.',
         buttonText: 'Read more',
-        imageUrl: 'https://picsum.photos/600/400?star',
+        imageUrl: developAi,
     },
     {
         title: 'BREAKING NEWS',
-        content: 'Mysterious signals detected. Nulla interdum sollicitudin justo eget facilisis.',
+        content: 'Mental Health Support Initiatives Launched by SpaceTec.',
         buttonText: 'Read more',
-        imageUrl: 'https://picsum.photos/600/400?sun',
+        imageUrl: mentalHealthSupport,
     },
     {
         title: 'BREAKING NEWS',
-        content: 'Unexpected weather changes. Nulla interdum sollicitudin justo eget facilisis.',
+        content: 'New Resource Distribution Center Opens in North Hackunia.',
         buttonText: 'Read more',
-        imageUrl: 'https://picsum.photos/600/400?moon',
+        imageUrl: resourceDistribution,
     },
     {
         title: 'BREAKING NEWS',
-        content: 'Strange artifacts found. Nulla interdum sollicitudin justo eget facilisis.',
+        content: 'Innovative Training Program for Crisis Management Launched.',
         buttonText: 'Read more',
-        imageUrl: 'https://picsum.photos/600/400?space',
+        imageUrl: trainingProgram,
     },
     {
         title: 'BREAKING NEWS',
-        content: 'Community on high alert. Nulla interdum sollicitudin justo eget facilisis.',
+        content: 'Hackunia Artists Create Inspirational Murals to Boost Morale.',
         buttonText: 'Read more',
-        imageUrl: 'https://picsum.photos/600/400?neptune',
+        imageUrl: inspirationalMurals,
+    },
+    {
+        title: 'BREAKING NEWS',
+        content: 'Tech Companies Collaborate to Develop New Communication Tools.',
+        buttonText: 'Read more',
+        imageUrl: communicationTools,
     },
 ];
 
