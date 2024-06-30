@@ -24,6 +24,18 @@ const fadeOut = keyframes`
     }
 `;
 
+const blinkingWarning = keyframes`
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+`;
+
 const CardWrapper = styled.div`
     background: rgba(240, 240, 240, 0.185);
     color: #fff;
@@ -62,26 +74,21 @@ const CardContent = styled.div`
 `;
 
 const ListItem = styled.li`
-    animation: ${({ fade }) => (fade === 'in' ? fadeIn : fadeOut)} 1s ease-in-out forwards;
+    animation: ${blinkingWarning} 1s infinite;
     list-style: none;
     text-align: center;
-    opacity: 0;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 1.2em;
 `;
 
 const WarningCard = ({ title, bulletPoints }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [fade, setFade] = useState('in');
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setFade('out');
-            setTimeout(() => {
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % bulletPoints.length);
-                setFade('in');
-            }, 1000);
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % bulletPoints.length);
         }, 5000);
 
         return () => clearInterval(interval);
@@ -92,8 +99,8 @@ const WarningCard = ({ title, bulletPoints }) => {
             <CardTitle>{title}</CardTitle>
             <CardContent>
                 <ul>
-                    <ListItem fade={fade}>
-                        <FaExclamationTriangle size={24} color="#ffcc00" />
+                    <ListItem>
+                        <FaExclamationTriangle size={30} color="#ffcc00" />
                         {bulletPoints[currentIndex]}
                     </ListItem>
                 </ul>

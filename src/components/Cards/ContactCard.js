@@ -25,7 +25,8 @@ const CardWrapper = styled.div`
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     animation: ${fadeIn} 1s ease-in-out;
 
@@ -44,6 +45,7 @@ const CardTitle = styled.h2`
 const CardContent = styled.p`
     font-size: 1em;
     text-align: center;
+    margin: 0; /* Remove default margin */
 `;
 
 const ContactCard = ({ title, content }) => {
