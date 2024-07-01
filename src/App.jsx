@@ -17,50 +17,69 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Login/Signup";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ChatScreen from "./components/Chat/ChatScreen";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 const App = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Hook to programmatically navigate
+  const navigate = useNavigate();
   const [activePlanet, setActivePlanet] = useState("/");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
   const [currentUserId, setCurrentUserId] = useState(null);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success"
+  });
 
   useEffect(() => {
-    // Check localStorage for authentication status on component mount
-    const storedAuthStatus = localStorage.getItem('isAuthenticated');
-    const storedUserId = localStorage.getItem('currentUserId');
+    const storedAuthStatus = localStorage.getItem("isAuthenticated");
+    const storedUserId = localStorage.getItem("currentUserId");
     if (storedAuthStatus && storedUserId) {
       setIsAuthenticated(JSON.parse(storedAuthStatus));
       setCurrentUserId(storedUserId);
     }
-    setLoading(false); // Set loading to false after checking authentication status
-  }, []); // The empty dependency array ensures this runs only once when the component mounts
+    setLoading(false);
+  }, []);
 
   const handleLogin = (userId) => {
     setIsAuthenticated(true);
     setCurrentUserId(userId);
-    localStorage.setItem('isAuthenticated', true); // Store authentication status in localStorage
-    localStorage.setItem('currentUserId', userId); // Store current user ID in localStorage
+    localStorage.setItem("isAuthenticated", true);
+    localStorage.setItem("currentUserId", userId);
   };
 
   const handleSignup = (userId) => {
     setIsAuthenticated(true);
     setCurrentUserId(userId);
-    localStorage.setItem('isAuthenticated', true); // Store authentication status in localStorage
-    localStorage.setItem('currentUserId', userId); // Store current user ID in localStorage
+    localStorage.setItem("isAuthenticated", true);
+    localStorage.setItem("currentUserId", userId);
+    setSnackbar({
+      open: true,
+      message: "Verification email sent to you. Please verify your email.",
+      severity: "info"
+    });
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     setCurrentUserId(null);
-    localStorage.removeItem('isAuthenticated'); // Clear authentication status in localStorage
-    localStorage.removeItem('currentUserId'); // Clear current user ID in localStorage
-    navigate('/login'); // Redirect to login page
+    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("currentUserId");
+    navigate("/login");
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar({
+      open: false,
+      message: "",
+      severity: "success"
+    });
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Show a loading indicator while checking authentication status
+    return <div>Loading...</div>;
   }
 
   return (
@@ -72,11 +91,11 @@ const App = () => {
               pathName={location.pathname}
               onHover={setActivePlanet}
               activePlanet={activePlanet}
-              onLogout={handleLogout} // Pass handleLogout to Navbar
+              onLogout={handleLogout}
             />
             <AnimatePresence>
               <Routes location={location} key={location.key}>
-              <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
+                <Route path="/" element={<KeyVisual activePlanet={activePlanet} />} />
                 <Route path="/" element={<Navigate to="/planets" />} />
                 <Route path="/mercury" element={<Mercury />} />
                 <Route path="/venus" element={<Venus />} />
@@ -88,7 +107,6 @@ const App = () => {
                 <Route path="/neptune" element={<Neptune />} />
                 <Route path="/planets" element={<Planets />} />
                 <Route path="/chat" element={<ChatScreen currentUserId={currentUserId} />} />
-                <Route path="/chat" element={<ChatScreen />} />
               </Routes>
             </AnimatePresence>
           </>
@@ -102,6 +120,16 @@ const App = () => {
             </Routes>
           </AnimatePresence>
         )}
+        <Snackbar
+          open={snackbar.open}
+          autoHideDuration={6000}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Wrapper>
     </Provider>
   );
