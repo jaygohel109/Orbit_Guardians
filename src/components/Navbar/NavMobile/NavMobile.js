@@ -4,7 +4,7 @@ import { planets } from '../data';
 import useToggleMenu from '../useToggleMenu';
 
 const NavMobile = ({ windowWidth, onLogout }) => {
-    const [handleToggle, restoreToDefault, isOpen, isExpanded, tabletBreakpoint] = useToggleMenu();
+    const [handleToggle, restoreToDefault, isOpen] = useToggleMenu();
 
     return (
         <Nav>

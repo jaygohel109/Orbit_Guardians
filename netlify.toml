@@ -1,0 +1,3 @@
+[build]
+  command = "EXTEND_ESLINT=false npm run build"
+  publish = "build"

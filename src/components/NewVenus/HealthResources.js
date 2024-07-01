@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Section, Title, Description, Card, CardContent, ContactForm } from './HealthResourcesStyles';
+import { Container, Section, Title, Description, Card, CardContent } from './HealthResourcesStyles';
 
 const HealthResources = () => {
     return (

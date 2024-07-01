@@ -8,7 +8,6 @@ import Mercury from "./pages/Mercury/Mercury";
 import Venus from "./pages/Venus/Venus";
 import Earth from "./pages/Earth/Earth";
 import Mars from "./pages/Mars/Mars";
-import Jupiter from "./pages/Jupiter/Jupiter";
 import Saturn from "./pages/Saturn/Saturn";
 import Uranus from "./pages/Uranus/Uranus";
 import Neptune from "./pages/Neptune/Neptune";
@@ -18,7 +17,6 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Login/Signup";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import ChatScreen from "./components/Chat/ChatScreen";
-import { supabase } from './supabaseClient';
 
 const App = () => {
   const location = useLocation();

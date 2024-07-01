@@ -1,17 +1,6 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import OrbitronFont from '../../assets/Orbitron/static/Orbitron-Bold.ttf'; // Adjust the path as per your project structure
-
-// Define @font-face rule for Orbitron font
-const OrbitronFontFace = css`
-    @font-face {
-        font-family: 'Orbitron';
-        src: local('Orbitron'), url(${OrbitronFont}) format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-`;
 
 export const Header = styled(motion.header)`
     padding: 16px 24px;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Section, Container, Content, Sidebar, Option, ContentContainer } from './PlanetSectionStyles';
+import { Section, Container, Sidebar, Option, ContentContainer } from './PlanetSectionStyles';
 import MedicalResources from './HealthResources';
 import MentalHealthSupport from './MentalHealthSupport';
 import HealthTips from './HealthTips';
@@ -8,7 +8,7 @@ import HealthProfessionals from './HealthProfessionals';
 
 const PlanetSection = ({ planetData }) => {
     const [currentTab, setCurrentTab] = useState('MedicalResources');
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [ setWindowWidth] = useState(window.innerWidth);
 
     const checkWindowWidth = () => {
         setWindowWidth(window.innerWidth);
