@@ -13,17 +13,6 @@ const fadeIn = keyframes`
     }
 `;
 
-const fadeOut = keyframes`
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-`;
-
 const blinkingWarning = keyframes`
     0% {
         opacity: 1;

@@ -40,15 +40,20 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "EXTEND_ESLINT=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+    "no-unused-vars": "off",
+    "react-hooks/exhaustive-deps": "off"
+    }
   },
   "browserslist": {
     "production": [

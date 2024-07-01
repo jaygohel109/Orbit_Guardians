@@ -7,7 +7,7 @@ import { supabase } from '../../supabaseClient';
 import L from 'leaflet';
 import alienIconUrl from '../../assets/alien_pointer.png'; // Path to your alien icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesomeIcon if using Font Awesome icons
-import { faSpinner,faSave,faTrash } from '@fortawesome/free-solid-svg-icons'; // Example: Import a spinner icon from Font Awesome
+import { faSpinner,faTrash } from '@fortawesome/free-solid-svg-icons'; // Example: Import a spinner icon from Font Awesome
 import './map.css'; // Optional: Add custom styles for the map component
 import styled, { keyframes } from 'styled-components';
 

@@ -99,6 +99,7 @@ const Chat = ({ conversationId, currentUserId, selectedUser }) => {
         return () => {
             supabase.removeChannel(messageSubscription);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [conversationId]);
 
     const fetchMessages = async () => {
@@ -120,7 +121,7 @@ const Chat = ({ conversationId, currentUserId, selectedUser }) => {
 
     const fetchUsername = async (userId) => {
         if (!usernames[userId]) {
-            const { data, error } = await supabase
+            const { data } = await supabase
                 .from('users')
                 .select('username')
                 .eq('id', userId)

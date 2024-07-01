@@ -328,15 +328,6 @@ const SearchBox = styled.input`
     font-size: 1em;
 `;
 
-const ResourceList = styled.ul`
-    list-style-type: none;
-    padding-left: 0;
-`;
-
-const ResourceItem = styled.li`
-    margin-bottom: 10px;
-`;
-
 const ResourceCard = styled.div`
     background-color: #f9f9f9;
     padding: 10px;
