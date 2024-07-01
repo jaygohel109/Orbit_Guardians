@@ -1,25 +1,28 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Nav = styled.nav``;
 
-export const Menu = styled.button`
+export const Menu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 17px;
-  background-color: transparent;
-  border: none;
+  width: 40px; /* Adjust width for icon size */
+  height: 40px; /* Adjust height for icon size */
   cursor: pointer;
+`;
+
+export const Icon = styled(FontAwesomeIcon)`
+  font-size: 1.5rem; /* Adjust icon size */
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export const Bars = styled.span`
   position: relative;
   width: 100%;
   height: 3px;
-  background: ${(props) => props.theme.colors.white};
   transition: transform 200ms ease;
 
   &::before,

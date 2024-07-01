@@ -1,7 +1,7 @@
-import { Nav, Menu, Bars, List, Item, Link } from './NavMobileStyles';
-import Icon from '../../Icon/Icon';
+import { Nav, Menu, List, Item, Link, Icon } from './NavMobileStyles';
 import { planets } from '../data';
 import useToggleMenu from '../useToggleMenu';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const NavMobile = ({ windowWidth, onLogout }) => {
     const [handleToggle, restoreToDefault, isOpen] = useToggleMenu();
@@ -9,7 +9,7 @@ const NavMobile = ({ windowWidth, onLogout }) => {
     return (
         <Nav>
             <Menu onClick={handleToggle}>
-                <Bars isOpen={isOpen} />
+                {isOpen ? <Icon icon={faTimes} /> : <Icon icon={faBars} />}
             </Menu>
             {isOpen && (
                 <List
