@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Card from '../../components/Cards/Card';
 import WarningCard from '../../components/Cards/WarningCard';
 import ContactCard from '../../components/Cards/ContactCard';
-import { hotNewsCards, warningCards, contactCardContent } from './data';
+import { hotNewsCards, warningCards, contactCardContent } from './data':
 
 const GridWrapper = styled.div`
     display: grid;
